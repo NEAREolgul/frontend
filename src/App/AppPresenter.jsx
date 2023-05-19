@@ -1,4 +1,4 @@
-import IndexRouter from "../Routes";
+import IndexRouter from '../Routes/index';
 
 const AppPresenter = () => {
   return <IndexRouter />;

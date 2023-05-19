@@ -1,5 +1,5 @@
-import AppPresenter from "./AppPresenter";
-
+import AppPresenter from './AppPresenter';
+import './css/style.css';
 const AppContainer = () => {
   return <AppPresenter />;
 };
