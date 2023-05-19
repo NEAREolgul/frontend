@@ -1,4 +1,4 @@
-import AppPresenter from "./AppPresenter";
+import AppPresenter from './AppPresenter';
 
 const AppContainer = () => {
   return <AppPresenter />;
