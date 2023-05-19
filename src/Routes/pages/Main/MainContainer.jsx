@@ -1,5 +1,6 @@
+import MainPresenter from './MainPresenter';
 const MainContainer = () => {
-  return <div>MainContainer</div>;
+  return <MainPresenter />;
 };
 
 export default MainContainer;
