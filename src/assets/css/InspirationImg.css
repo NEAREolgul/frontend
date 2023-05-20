@@ -1,0 +1,15 @@
+
+.likebok {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.likebox {
+    height: 85%;
+    align-items: flex-start;
+}
