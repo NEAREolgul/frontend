@@ -10,7 +10,7 @@ const Header = () => {
           {/* Site branding */}
           <div className="shrink-0 mr-4">
             {/* Logo */}
-            <div className="block group" href="/" aria-label="Cruip">
+            <div className="block group" aria-label="Cruip">
               <svg
                 className="fill-blue-500 group-hover:fill-blue-600 transition duration-150 ease-in-out w-8 h-8"
                 width="32"

@@ -1,5 +1,6 @@
 import Blog from "../../../Components/Blog";
 import Carousel from "../../../Components/Carousel";
+import Creatives from "../../../Components/Creatives";
 import Inspiration from "../../../Components/Inspiration";
 
 const MainPresenter = () => {
@@ -8,6 +9,7 @@ const MainPresenter = () => {
       <Blog />
       <Carousel />
       <Inspiration />
+      <Creatives />
     </div>
   );
 };
