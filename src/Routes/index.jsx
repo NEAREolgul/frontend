@@ -1,7 +1,15 @@
-
-import { Route, Routes } from "react-router-dom";
-import { MainLayout } from "../Layout";
-import { Main, Signin, Signup, Mint,RegisterArtist,NFTlist, NFTdetail, } from "./pages";
+import { Route, Routes } from 'react-router-dom';
+import { MainLayout } from '../Layout';
+import {
+  Main,
+  Signin,
+  Signup,
+  Mint,
+  RegisterArtist,
+  NFTlist,
+  NFTdetail,
+  BuyNFT,
+} from './pages';
 
 const IndexRouter = ({ isSignedIn, contractId, wallet }) => {
   return (
@@ -23,7 +31,8 @@ const IndexRouter = ({ isSignedIn, contractId, wallet }) => {
           isSignedIn={isSignedIn}
         />
         <Route path="/nftlist" element={<NFTlist />} />
-        <Route path="/nftdetail" element={<NFTdetail />} />  
+        <Route path="/nftdetail" element={<NFTdetail />} />
+        <Route path="/buynft" element={<BuyNFT />} isSignedIn={isSignedIn} />
       </Route>
     </Routes>
   );

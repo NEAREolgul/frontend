@@ -1,13 +1,12 @@
+import { useState } from 'react';
 import NFTdetailImg from '../../../Components/NftdetailImg';
 import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
-import '../../../assets/css/Nftdetail.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import Carousel from '../../../Components/Carousel';
 
-const NFTdetailPresenter = (props) => {
+const BuyNFTPresenter = (props) => {
   /* Router */
   /* State */
+  const { isSignedIn } = props;
   const [nftInfo, setNftInfo] = useState({
     content_title: 'Title',
     user_nm: 'HanHo',
@@ -22,7 +21,7 @@ const NFTdetailPresenter = (props) => {
   /* Functions */
   /* Render */
   return (
-    <section className="mt5 bg-gray-800">
+    <section className="mt5 h100vh bg-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt5 py-12 md:pt-32 md:pb-20">
           <div className="relative flex flexrow">
@@ -47,30 +46,14 @@ const NFTdetailPresenter = (props) => {
                 <p className="pricebox-price">{nftInfo.content_price}</p>
               </div>
               <div className="actionbuttonbox">
-                {nftInfo.is_sell ? (
-                  <Link
-                    className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                    to={{ pathname: '/' }}
-                  >
-                    Buy
-                  </Link>
-                ) : (
-                  <Link className="actionbutton notworkingbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm">
-                    Buy
-                  </Link>
-                )}
                 <Link
                   className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
                   to={{ pathname: '/' }}
                 >
-                  Bid
+                  Buy
                 </Link>
               </div>
             </div>
-          </div>
-          <div className="detailinfo">입찰현황 / 거래기록</div>
-          <div>
-            <Carousel />
           </div>
         </div>
       </div>
@@ -78,13 +61,4 @@ const NFTdetailPresenter = (props) => {
   );
 };
 
-export default NFTdetailPresenter;
-
-// 이름
-// 가격
-// 작가
-// 판매여부
-// 로그
-
-// 구매
-// 제안
+export default BuyNFTPresenter;
