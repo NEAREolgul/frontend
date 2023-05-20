@@ -14,7 +14,6 @@ const MyPageContainer = () => {
     if (userInfo) {
       const result = await ContentAPI.getContentByUser(userInfo.user_id);
       setContentList(result);
-      console.log(result);
       return true;
     }
     setContentList([]);
@@ -27,12 +26,23 @@ const MyPageContainer = () => {
       content_title: contentInfo.content_title,
       content_desc: contentInfo.content_desc,
     };
-    console.log(postData);
     const result = await ContentAPI.createContent(postData);
     if (result) {
       await handleContentList();
       return true;
     }
+  };
+
+  const handleValidate = async (files) => {
+    console.log(typeof files[0]);
+    const formData = new FormData();
+    formData.append('files', files[0]);
+    formData.append('files', files[1]);
+    const result = await ContentAPI.vlidate(formData);
+    if (result) {
+      return result;
+    }
+    return false;
   };
 
   /* Hooks */
@@ -45,6 +55,7 @@ const MyPageContainer = () => {
     <MyPagePresenter
       contentList={contentList}
       createContent={handleCreateContent}
+      validate={handleValidate}
     />
   );
 };

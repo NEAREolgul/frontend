@@ -3,11 +3,15 @@ import CREATIVE_BG from '../../../assets/images/creative-bg-01.jpg';
 import CREATIVE_AVATAR from '../../../assets/images/creative-01.jpg';
 import { EDITOR_URL, getSession } from '../../../utils/index';
 import ContentModal from './components/ContentModal';
+import MintModal from './components/MintModal';
+import Thumbnail from './components/Thumbnail';
 
-const MyPagePresenter = ({ contentList, createContent }) => {
+const MyPagePresenter = ({ contentList, createContent, validate }) => {
   /* Router */
   /* State */
   const [isModal, setIsModal] = useState(false);
+  const [isMintModal, setIsMintModal] = useState(false);
+  const [content, setContent] = useState();
   const [userInfo, setUserInfo] = useState({ user_id: '', near_addr: '' });
   const progressList = contentList.filter((item) => {
     return !item.is_nft;
@@ -27,6 +31,22 @@ const MyPagePresenter = ({ contentList, createContent }) => {
     setIsModal(!isModal);
   };
 
+  const handleCreateContent = async (dd) => {
+    const result = await createContent(dd);
+    if (result) {
+      setIsModal(false);
+      return true;
+    }
+    return false;
+  };
+
+  const handleMintModal = (e, item) => {
+    e.preventDefault();
+    setContent(item);
+    setIsMintModal(!isMintModal);
+    return true;
+  };
+
   /* Hooks */
   useEffect(() => {
     handleUserInfo();
@@ -41,6 +61,7 @@ const MyPagePresenter = ({ contentList, createContent }) => {
         target="_blank"
         rel="noreferrer"
         key={content_id}
+        className="mr-5"
       >
         <div
           style={{
@@ -48,8 +69,16 @@ const MyPagePresenter = ({ contentList, createContent }) => {
             height: '256px',
             border: '1px solid lightgray',
           }}
-        ></div>
-        {content_title}
+        >
+          <Thumbnail content={item} />
+        </div>
+        <div>{content_title}</div>
+        <div
+          className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm m-6"
+          onClick={(e) => handleMintModal(e, item)}
+        >
+          Minting
+        </div>
       </a>
     );
   });
@@ -111,13 +140,31 @@ const MyPagePresenter = ({ contentList, createContent }) => {
             <div
               className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm m-6"
               onClick={handleModal}
-              // onClick={handle}
             >
               Create Masterpiece
             </div>
           )}
 
-          <div className="p-3 flex flex-wrap">{inProgressRender}</div>
+          <div className="p-3 flex flex-wrap">
+            {inProgressRender}
+            <div
+              style={{
+                width: '256px',
+                height: '256px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm m-6"
+                onClick={handleModal}
+                // onClick={handle}
+              >
+                Create New Masterpiece
+              </div>
+            </div>
+          </div>
         </div>
         <div className="w-full text-center">
           <div className="h3">My NFT</div>
@@ -127,7 +174,8 @@ const MyPagePresenter = ({ contentList, createContent }) => {
           <div className="p-3">{isNftRender}</div>
         </div>
       </div>
-      <ContentModal modal={isModal} submit={createContent} />
+      <ContentModal modal={isModal} submit={handleCreateContent} />
+      <MintModal modal={isMintModal} submit={validate} content={content} />
     </section>
   );
 };
