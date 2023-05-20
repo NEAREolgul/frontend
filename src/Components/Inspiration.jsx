@@ -1,17 +1,18 @@
-import { useState } from "react";
-import Author01 from "../assets/images/author-01.jpg";
-import Inspiration01 from "../assets/images/inspiration-01.jpg";
-import Inspiration02 from "../assets/images/inspiration-02.jpg";
-import Inspiration03 from "../assets/images/inspiration-03.jpg";
-import Inspiration04 from "../assets/images/inspiration-04.jpg";
-import Inspiration05 from "../assets/images/inspiration-05.jpg";
-import Inspiration06 from "../assets/images/inspiration-06.jpg";
-import Inspiration07 from "../assets/images/inspiration-07.jpg";
-import Inspiration08 from "../assets/images/inspiration-08.jpg";
-import Inspiration09 from "../assets/images/inspiration-09.jpg";
+import { useState } from 'react';
+import Author01 from '../assets/images/author-01.jpg';
+import Inspiration01 from '../assets/images/inspiration-01.jpg';
+import Inspiration02 from '../assets/images/inspiration-02.jpg';
+import Inspiration03 from '../assets/images/inspiration-03.jpg';
+import Inspiration04 from '../assets/images/inspiration-04.jpg';
+import Inspiration05 from '../assets/images/inspiration-05.jpg';
+import Inspiration06 from '../assets/images/inspiration-06.jpg';
+import Inspiration07 from '../assets/images/inspiration-07.jpg';
+import Inspiration08 from '../assets/images/inspiration-08.jpg';
+import Inspiration09 from '../assets/images/inspiration-09.jpg';
+import InspirationPost from './Swiper/InspirationPost';
 
 const Inspiration = () => {
-  const [category, setCategory] = useState("0");
+  const [category, setCategory] = useState('0');
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -38,63 +39,37 @@ const Inspiration = () => {
             {/* Category buttons */}
             <div className="mb-8">
               <div className="flex flex-wrap justify-center md:justify-start -m-1.5">
+                <InspirationPost
+                  CategoryTitle="All"
+                  Checkcategory="0"
+                  category={category}
+                  setCategory={setCategory}
+                  Categoryqty="2.7K"
+                />
+
+                <Inspiration
+                  CategoryTitle="Illustration"
+                  Checkcategory="1"
+                  category={category}
+                  setCategory={setCategory}
+                  Categoryqty="1.2K"
+                />
+
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "0"
-                      ? "bg-blue-100 border-blue-300"
-                      : "bg-white border-gray-200"
+                    category === '2'
+                      ? 'bg-blue-100 border-blue-300'
+                      : 'bg-white border-gray-200'
                   }`}
-                  onClick={() => setCategory("0")}
-                >
-                  <div className="flex items-center justify-center">
-                    <span>View All</span>
-                    <span
-                      className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === "0"
-                          ? "text-white bg-blue-300"
-                          : "text-gray-400 bg-gray-100"
-                      }`}
-                    >
-                      2.7K
-                    </span>
-                  </div>
-                </button>
-                <button
-                  className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "1"
-                      ? "bg-blue-100 border-blue-300"
-                      : "bg-white border-gray-200"
-                  }`}
-                  onClick={() => setCategory("1")}
-                >
-                  <div className="flex items-center justify-center">
-                    <span>Illustration</span>
-                    <span
-                      className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === "1"
-                          ? "text-white bg-blue-300"
-                          : "text-gray-400 bg-gray-100"
-                      }`}
-                    >
-                      1.2K
-                    </span>
-                  </div>
-                </button>
-                <button
-                  className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "2"
-                      ? "bg-blue-100 border-blue-300"
-                      : "bg-white border-gray-200"
-                  }`}
-                  onClick={() => setCategory("2")}
+                  onClick={() => setCategory('2')}
                 >
                   <div className="flex items-center justify-center">
                     <span>Branding</span>
                     <span
                       className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === "2"
-                          ? "text-white bg-blue-300"
-                          : "text-gray-400 bg-gray-100"
+                        category === '2'
+                          ? 'text-white bg-blue-300'
+                          : 'text-gray-400 bg-gray-100'
                       }`}
                     >
                       1.4K
@@ -103,19 +78,19 @@ const Inspiration = () => {
                 </button>
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "3"
-                      ? "bg-blue-100 border-blue-300"
-                      : "bg-white border-gray-200"
+                    category === '3'
+                      ? 'bg-blue-100 border-blue-300'
+                      : 'bg-white border-gray-200'
                   }`}
-                  onClick={() => setCategory("3")}
+                  onClick={() => setCategory('3')}
                 >
                   <div className="flex items-center justify-center">
                     <span>Product Design</span>
                     <span
                       className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === "3"
-                          ? "text-white bg-blue-300"
-                          : "text-gray-400 bg-gray-100"
+                        category === '3'
+                          ? 'text-white bg-blue-300'
+                          : 'text-gray-400 bg-gray-100'
                       }`}
                     >
                       1.7K
@@ -124,19 +99,19 @@ const Inspiration = () => {
                 </button>
                 <button
                   className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === "4"
-                      ? "bg-blue-100 border-blue-300"
-                      : "bg-white border-gray-200"
+                    category === '4'
+                      ? 'bg-blue-100 border-blue-300'
+                      : 'bg-white border-gray-200'
                   }`}
-                  onClick={() => setCategory("4")}
+                  onClick={() => setCategory('4')}
                 >
                   <div className="flex items-center justify-center">
                     <span>Typography</span>
                     <span
                       className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === "4"
-                          ? "text-white bg-blue-300"
-                          : "text-gray-400 bg-gray-100"
+                        category === '4'
+                          ? 'text-white bg-blue-300'
+                          : 'text-gray-400 bg-gray-100'
                       }`}
                     >
                       989
@@ -156,8 +131,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "1", "3"].includes(category)
-                      ? { display: "none" }
+                    !['0', '1', '3'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -225,8 +200,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "2", "3"].includes(category)
-                      ? { display: "none" }
+                    !['0', '2', '3'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -295,8 +270,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "1", "3", "4"].includes(category)
-                      ? { display: "none" }
+                    !['0', '1', '3', '4'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -365,8 +340,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "1", "2", "4"].includes(category)
-                      ? { display: "none" }
+                    !['0', '1', '2', '4'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -435,8 +410,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "1", "2"].includes(category)
-                      ? { display: "none" }
+                    !['0', '1', '2'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -505,8 +480,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "1", "2", "3", "4"].includes(category)
-                      ? { display: "none" }
+                    !['0', '1', '2', '3', '4'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -575,8 +550,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "1", "3", "4"].includes(category)
-                      ? { display: "none" }
+                    !['0', '1', '3', '4'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -645,8 +620,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "2", "3", "4"].includes(category)
-                      ? { display: "none" }
+                    !['0', '2', '3', '4'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
@@ -715,8 +690,8 @@ const Inspiration = () => {
                 <a
                   className="relative group hover:shadow-xl transition duration-150 ease-in-out"
                   style={
-                    !["0", "2", "4"].includes(category)
-                      ? { display: "none" }
+                    !['0', '2', '4'].includes(category)
+                      ? { display: 'none' }
                       : {}
                   }
                   href="#0"
