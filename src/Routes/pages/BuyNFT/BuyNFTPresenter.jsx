@@ -1,27 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NFTdetailImg from '../../../Components/NftdetailImg';
 import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
 import { Link } from 'react-router-dom';
+import NearIcon from '../../../assets/NearIcon.png';
+import '../../../assets/css/BidNFT.css';
+import Buylist from '../../../Components/Buylist';
+import PostAuthor01 from '../../../assets/images/blog-author-01.jpg';
+import PostAuthor02 from '../../../assets/images/blog-author-02.jpg';
+import PostAuthor03 from '../../../assets/images/blog-author-03.jpg';
 
 const BuyNFTPresenter = (props) => {
   /* Router */
   /* State */
-  const { isSignedIn } = props;
+  const { isSignedIn, buyList, setBuyList } = props;
   const [nftInfo, setNftInfo] = useState({
     content_title: 'Title',
     user_nm: 'HanHo',
     content_desc:
       'This NFT made buy HanHo. This wonderful Art is made in Korea',
-    content_price: '$ 90',
+    content_price: '90',
     is_sell: false,
     content_paint: 'What is this?',
     created_at: '2020-12-20',
   });
   /* Hooks */
   /* Functions */
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate('/');
+    }
+  }, [isSignedIn]);
+
   /* Render */
   return (
-    <section className="mt5 h100vh bg-gray-800">
+    <section className="section h100 mt5 h100vh bg-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt5 py-12 md:pt-32 md:pb-20">
           <div className="relative flex flexrow">
@@ -44,6 +56,7 @@ const BuyNFTPresenter = (props) => {
               <div className="pricebox">
                 <p className="pricebox-p">Price</p>
                 <p className="pricebox-price">{nftInfo.content_price}</p>
+                <img src={NearIcon} className="nearicon" />
               </div>
               <div className="actionbuttonbox">
                 <Link
@@ -52,6 +65,32 @@ const BuyNFTPresenter = (props) => {
                 >
                   Buy
                 </Link>
+              </div>
+            </div>
+          </div>
+          <div className="box">
+            <div className="fw status">
+              <div className="status-header">
+                <p>History</p>
+              </div>
+              <div>
+                {buyList.map((item, index) => {
+                  <Buylist
+                    price={item.price}
+                    user_nm={item.user_nm}
+                    authSrc={item.authSrc}
+                  />;
+                })}
+              </div>
+            </div>
+
+            <div className="fw status">
+              <div className="status-header">
+                <p>Bid Status</p>
+              </div>
+              <div>
+                <Buylist price="58" user_nm="Yohan" authSrc={PostAuthor02} />
+                <Buylist price="38" user_nm="Simon" authSrc={PostAuthor03} />
               </div>
             </div>
           </div>

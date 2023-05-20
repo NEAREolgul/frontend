@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import NFTdetailImg from '../../../Components/NftdetailImg';
 import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NearIcon from '../../../assets/NearIcon.png';
 import '../../../assets/css/BidNFT.css';
 
 const BidNFTPresenter = (props) => {
   /* Router */
+  const navigate = useNavigate();
 
   /* State */
   const { isSignedIn } = props;
@@ -31,8 +32,8 @@ const BidNFTPresenter = (props) => {
   /* Functions */
   /* Render */
   return (
-    <section className="mt5 h100vh bg-gray-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="section mt5 h100 bg-gray-800">
+      <div className="h100 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt5 py-12 md:pt-32 md:pb-20">
           <div className="relative flex flexrow">
             <div
