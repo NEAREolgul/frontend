@@ -1,12 +1,44 @@
-import { useState } from "react";
-import Author01 from "../assets/images/author-01.jpg";
-import InspirationCategory from "./Swiper/InspirationCategory";
-import InspirationImg from "./Swiper/InspirationImg";
-import { BiSearchAlt } from "react-icons/bi";
+import { useState } from 'react';
+import Author01 from '../assets/images/author-01.jpg';
+import InspirationCategory from './Swiper/InspirationCategory';
+import InspirationImg from './Swiper/InspirationImg';
+import { BiSearchAlt } from 'react-icons/bi';
+import PostAuthor01 from '../assets/images/blog-author-01.jpg';
+import PostAuthor02 from '../assets/images/blog-author-02.jpg';
+import PostAuthor03 from '../assets/images/blog-author-03.jpg';
+import PostAuthor04 from '../assets/images/blog-author-04.jpg';
+import PostAuthor05 from '../assets/images/blog-author-05.jpg';
 
 const Inspiration = (props) => {
+  const avatars = [
+    PostAuthor01,
+    PostAuthor02,
+    PostAuthor03,
+    PostAuthor04,
+    PostAuthor05,
+  ];
+  const names = ['BoGeum', 'YoHan', 'Simon', 'HanHo', 'KyeongWoo'];
+  const emails = [
+    'bogeum@islab.re.kr',
+    'yohan@islab.re.kr',
+    'simon@islab.re.kr',
+    'hanho@islab.re.kr',
+    'kyeongwoo@islab.re.kr',
+  ];
+  const arrays = [
+    ['0', '1', '3'],
+    ['0', '2', '3'],
+    ['0', '1', '4'],
+    ['0', '2', '3', '4'],
+    ['0', '2'],
+    ['0', '3'],
+    ['0', '1', '2'],
+    ['0', '3', '4'],
+    ['0', '4'],
+  ];
+
   const { List = false, tokenImg } = props;
-  const [category, setCategory] = useState("0");
+  const [category, setCategory] = useState('0');
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -25,7 +57,13 @@ const Inspiration = (props) => {
                   fillRule="evenodd"
                 />
               </svg>
-              <h2 className="h2 font-cabinet-grotesk">Latest inspiration</h2>
+              {List ? (
+                <h2 className="h2 font-cabinet-grotesk">Latest Art NFT</h2>
+              ) : (
+                <a href="/nftlist">
+                  <h2 className="h2 font-cabinet-grotesk">Latest Art NFT</h2>
+                </a>
+              )}
             </div>
           </div>
           {/* Content */}
@@ -34,7 +72,7 @@ const Inspiration = (props) => {
             <div className="mb-8">
               {List && (
                 <div className="searchbox mb2 bg-white relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5">
-                  <BiSearchAlt size="2rem" style={{ margin: "auto" }} />
+                  <BiSearchAlt size="2rem" style={{ margin: 'auto' }} />
                   <input type="text" className="searchbox-input" />
                 </div>
               )}
@@ -44,7 +82,7 @@ const Inspiration = (props) => {
                   Checkcategory="0"
                   category={category}
                   setCategory={setCategory}
-                  CategoryQty="2.7K"
+                  CategoryQty="9"
                 />
 
                 <InspirationCategory
@@ -52,7 +90,7 @@ const Inspiration = (props) => {
                   Checkcategory="1"
                   category={category}
                   setCategory={setCategory}
-                  CategoryQty="1.2K"
+                  CategoryQty="4"
                 />
 
                 <InspirationCategory
@@ -60,7 +98,7 @@ const Inspiration = (props) => {
                   Checkcategory="2"
                   category={category}
                   setCategory={setCategory}
-                  CategoryQty="1.4K"
+                  CategoryQty="5"
                 />
 
                 <InspirationCategory
@@ -68,7 +106,7 @@ const Inspiration = (props) => {
                   Checkcategory="3"
                   category={category}
                   setCategory={setCategory}
-                  CategoryQty="1.7K"
+                  CategoryQty="6"
                 />
 
                 <InspirationCategory
@@ -76,7 +114,7 @@ const Inspiration = (props) => {
                   Checkcategory="4"
                   category={category}
                   setCategory={setCategory}
-                  CategoryQty="989"
+                  CategoryQty="4"
                 />
               </div>
             </div>
@@ -89,20 +127,20 @@ const Inspiration = (props) => {
               >
                 {/* 1st Gallery img */}
                 {tokenImg &&
-                  tokenImg.map((i) => {
+                  tokenImg.map((i, idx) => {
                     const { metadata } = i;
                     console.log(metadata);
                     return (
                       <InspirationImg
-                        StyleArray={["0", "1", "3"]}
+                        StyleArray={arrays[idx % 5]}
                         category={category}
                         imgSrc={metadata.media}
-                        authSrc={Author01}
+                        authSrc={avatars[idx % 5]}
                         wh={9}
-                        AuthName="HanHo"
-                        AuthLink="Hnaho@islab.re.kr"
-                        LikeQty="255K"
-                        Contentprice="$ 10"
+                        AuthName={names[idx % 5]}
+                        AuthLink={emails[idx % 5]}
+                        LikeQty={Math.floor(Math.random() * 1000) + 'K'}
+                        Contentprice={Math.floor(Math.random() * 100) + ' NEAR'}
                       />
                     );
                   })}
