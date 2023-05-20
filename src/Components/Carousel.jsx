@@ -85,8 +85,8 @@ const Carousel = () => {
           <div className="carousel swiper-container max-w-sm mx-auto sm:max-w-none ">
             <div className="swiper-wrapper">
               {/* Carousel items */}
-              {carousel.map((i) => {
-                return <SwiperImg Carousel={i} />;
+              {carousel.map((i, idx) => {
+                return <SwiperImg Carousel={i} key={idx} />;
               })}
             </div>
           </div>
