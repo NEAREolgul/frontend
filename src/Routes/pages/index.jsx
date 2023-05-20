@@ -7,5 +7,6 @@ export { default as NFTcreate } from './NFTcreate';
 export { default as NFTlist } from './NFTlist';
 export { default as NFTdetail } from './NFTdetail';
 export { default as BuyNFT } from './BuyNFT';
+export { default as BidNFT } from './BidNFT';
 export { default as Edtior } from './Editor';
 export { default as MyPage } from './MyPage';

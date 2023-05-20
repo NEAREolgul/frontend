@@ -29,3 +29,7 @@
     border: none;
     --tw-ring-color: none !important;
 }
+
+.mb2 {
+    margin-bottom: 2% !important;
+}
