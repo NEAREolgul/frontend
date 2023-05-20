@@ -1,12 +1,13 @@
 import React from 'react';
 
-function InspirationPost(props) {
+function InspirationCategory(props) {
   /* Router */
   /* State */
-  const { CategoryTitle, Checkcategory, category, setCategory, Categoryqty } =
+  const { CategoryTitle, Checkcategory, category, setCategory, CategoryQty } =
     props;
   /* Hooks */
   /* Functions */
+
   /* Render */
   return (
     <button
@@ -15,7 +16,7 @@ function InspirationPost(props) {
           ? 'bg-blue-100 border-blue-300'
           : 'bg-white border-gray-200'
       }`}
-      onClick={() => setCategory({ Checkcategory })}
+      onClick={() => setCategory(Checkcategory)}
     >
       <div className="flex items-center justify-center">
         <span>{CategoryTitle}</span>
@@ -26,11 +27,11 @@ function InspirationPost(props) {
               : 'text-gray-400 bg-gray-100'
           }`}
         >
-          {Categoryqty}
+          {CategoryQty}
         </span>
       </div>
     </button>
   );
 }
 
-export default InspirationPost;
+export default InspirationCategory;

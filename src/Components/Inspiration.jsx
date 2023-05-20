@@ -9,7 +9,8 @@ import Inspiration06 from '../assets/images/inspiration-06.jpg';
 import Inspiration07 from '../assets/images/inspiration-07.jpg';
 import Inspiration08 from '../assets/images/inspiration-08.jpg';
 import Inspiration09 from '../assets/images/inspiration-09.jpg';
-import InspirationPost from './Swiper/InspirationPost';
+import InspirationCategory from './Swiper/InspirationCategory';
+import InspirationImg from './Swiper/InspirationImg';
 
 const Inspiration = () => {
   const [category, setCategory] = useState('0');
@@ -39,85 +40,45 @@ const Inspiration = () => {
             {/* Category buttons */}
             <div className="mb-8">
               <div className="flex flex-wrap justify-center md:justify-start -m-1.5">
-                <InspirationPost
+                <InspirationCategory
                   CategoryTitle="All"
                   Checkcategory="0"
                   category={category}
                   setCategory={setCategory}
-                  Categoryqty="2.7K"
+                  CategoryQty="2.7K"
                 />
 
-                <Inspiration
+                <InspirationCategory
                   CategoryTitle="Illustration"
                   Checkcategory="1"
                   category={category}
                   setCategory={setCategory}
-                  Categoryqty="1.2K"
+                  CategoryQty="1.2K"
                 />
 
-                <button
-                  className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === '2'
-                      ? 'bg-blue-100 border-blue-300'
-                      : 'bg-white border-gray-200'
-                  }`}
-                  onClick={() => setCategory('2')}
-                >
-                  <div className="flex items-center justify-center">
-                    <span>Branding</span>
-                    <span
-                      className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === '2'
-                          ? 'text-white bg-blue-300'
-                          : 'text-gray-400 bg-gray-100'
-                      }`}
-                    >
-                      1.4K
-                    </span>
-                  </div>
-                </button>
-                <button
-                  className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === '3'
-                      ? 'bg-blue-100 border-blue-300'
-                      : 'bg-white border-gray-200'
-                  }`}
-                  onClick={() => setCategory('3')}
-                >
-                  <div className="flex items-center justify-center">
-                    <span>Product Design</span>
-                    <span
-                      className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === '3'
-                          ? 'text-white bg-blue-300'
-                          : 'text-gray-400 bg-gray-100'
-                      }`}
-                    >
-                      1.7K
-                    </span>
-                  </div>
-                </button>
-                <button
-                  className={`relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5 ${
-                    category === '4'
-                      ? 'bg-blue-100 border-blue-300'
-                      : 'bg-white border-gray-200'
-                  }`}
-                  onClick={() => setCategory('4')}
-                >
-                  <div className="flex items-center justify-center">
-                    <span>Typography</span>
-                    <span
-                      className={`text-xs font-semibold px-1 py-px rounded-full ml-2 ${
-                        category === '4'
-                          ? 'text-white bg-blue-300'
-                          : 'text-gray-400 bg-gray-100'
-                      }`}
-                    >
-                      989
-                    </span>
-                  </div>
-                </button>
+                <InspirationCategory
+                  CategoryTitle="Branding"
+                  Checkcategory="2"
+                  category={category}
+                  setCategory={setCategory}
+                  CategoryQty="1.4K"
+                />
+
+                <InspirationCategory
+                  CategoryTitle="Product Design"
+                  Checkcategory="3"
+                  category={category}
+                  setCategory={setCategory}
+                  CategoryQty="1.7K"
+                />
+
+                <InspirationCategory
+                  CategoryTitle="Typography"
+                  Checkcategory="4"
+                  category={category}
+                  setCategory={setCategory}
+                  CategoryQty="989"
+                />
               </div>
             </div>
             {/* Gallery */}
@@ -128,634 +89,112 @@ const Inspiration = () => {
                 data-aos-id-inpspiration
               >
                 {/* 1st Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '1', '3'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration01}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 01"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-9 h-9 rounded-full mr-4"
-                          src={Author01}
-                          width="36"
-                          height="36"
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '1', '3']}
+                  category={category}
+                  imgSrc={Inspiration01}
+                  authSrc={Author01}
+                  wh={9}
+                  AuthName="HanHo"
+                  AuthLink="Hnaho@islab.re.kr"
+                  LikeQty="255K"
+                />
+
                 {/* 2nd Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '2', '3'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="100"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration02}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 02"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '2', '3']}
+                  delay="100"
+                  category={category}
+                  imgSrc={Inspiration02}
+                  authSrc={Author01}
+                  AuthName="Simon"
+                  AuthLink="simon@islab.re.kr"
+                  LikeQty="677K"
+                />
+
                 {/* 3rd Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '1', '3', '4'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="200"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration03}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 03"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '1', '3', '4']}
+                  delay="200"
+                  category={category}
+                  imgSrc={Inspiration03}
+                  authSrc={Author01}
+                  AuthName="KyeongWoo"
+                  AuthLink="KyeongWoo@islab.re.kr"
+                  LikeQty="624K"
+                />
+
                 {/* 4th Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '1', '2', '4'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="300"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration04}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 04"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '1', '2', '4']}
+                  delay="300"
+                  category={category}
+                  imgSrc={Inspiration04}
+                  authSrc={Author01}
+                  AuthName="Yohan"
+                  AuthLink="Yohan@islab.re.kr"
+                  LikeQty="234K"
+                />
+
                 {/* 5th Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '1', '2'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="400"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration05}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 05"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '1', '2']}
+                  delay="400"
+                  category={category}
+                  imgSrc={Inspiration05}
+                  authSrc={Author01}
+                  AuthName="BoGeum"
+                  AuthLink="BoGeum@islab.re.kr"
+                  LikeQty="555K"
+                />
+
                 {/* 6th Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '1', '2', '3', '4'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="500"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration06}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 06"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '1', '2', '3', '4']}
+                  delay="500"
+                  category={category}
+                  imgSrc={Inspiration06}
+                  authSrc={Author01}
+                  AuthName="JoUk"
+                  AuthLink="JoUk@islab.re.kr"
+                  LikeQty="9999K"
+                />
+
                 {/* 7th Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '1', '3', '4'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="600"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration07}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 07"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '1', '3', '4']}
+                  delay="600"
+                  category={category}
+                  imgSrc={Inspiration07}
+                  authSrc={Author01}
+                  AuthName="SangBong"
+                  AuthLink="SangBong@islab.re.kr"
+                  LikeQty="542K"
+                />
+
                 {/* 8th Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '2', '3', '4'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="700"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration08}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 08"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '2', '3', '4']}
+                  delay="700"
+                  category={category}
+                  imgSrc={Inspiration08}
+                  authSrc={Author01}
+                  AuthName="JaeHan"
+                  AuthLink="JaeHan@islab.re.kr"
+                  LikeQty="12K"
+                />
+
                 {/* 9th Gallery img */}
-                <a
-                  className="relative group hover:shadow-xl transition duration-150 ease-in-out"
-                  style={
-                    !['0', '2', '4'].includes(category)
-                      ? { display: 'none' }
-                      : {}
-                  }
-                  href="#0"
-                  data-aos="fade-down"
-                  data-aos-anchor="[data-aos-id-inpspiration]"
-                  data-aos-delay="800"
-                >
-                  <img
-                    className="w-full aspect-square object-cover"
-                    src={Inspiration09}
-                    width="352"
-                    height="352"
-                    alt="Inspiration 09"
-                  />
-                  {/* Content on hover */}
-                  <div className="md:hidden md:group-hover:block absolute bottom-0 left-0 right-0 p-4">
-                    {/* Backdrop */}
-                    <div
-                      className="absolute inset-0 -mt-4 bg-gradient-to-t from-gray-800 to-transparent opacity-80 pointer-events-none"
-                      aria-hidden="true"
-                    />
-                    {/* Content */}
-                    <div className="relative flex justify-between">
-                      {/* Left side */}
-                      <div className="flex items-center">
-                        <img
-                          className="shrink-0 w-10 h-10 rounded-full mr-4"
-                          src={Author01}
-                          width={40}
-                          height={40}
-                          alt="Author 01"
-                        />
-                        <div className="truncate">
-                          <div className="font-bold text-white truncate">
-                            Ada Ahdiyat
-                          </div>
-                          <div className="text-xs text-white opacity-60 truncate">
-                            @ada-designer-ok
-                          </div>
-                        </div>
-                      </div>
-                      {/* Right side */}
-                      <div className="flex flex-nowrap items-center ml-2">
-                        <button className="text-rose-500 hover:text-rose-600">
-                          <span className="sr-only">Like</span>
-                          <svg
-                            className="fill-current"
-                            width="16"
-                            height="14"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.682 1.318A4.485 4.485 0 0 0 11.5 0 4.377 4.377 0 0 0 8 1.707 4.383 4.383 0 0 0 4.5 0a4.5 4.5 0 0 0-3.182 7.682L8 14l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 11.247l-5.285-5A2.5 2.5 0 0 1 4.5 2c1.437 0 2.312.681 3.5 2.625C9.187 2.681 10.062 2 11.5 2a2.5 2.5 0 0 1 1.785 4.251h-.003Z"
-                              fillRule="nonzero"
-                            />
-                          </svg>
-                        </button>
-                        <div className="whitespace-nowrap text-sm text-white opacity-90 ml-2">
-                          4K
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <InspirationImg
+                  StyleArray={['0', '2', '4']}
+                  delay="800"
+                  category={category}
+                  imgSrc={Inspiration09}
+                  authSrc={Author01}
+                  AuthName="DongGyu"
+                  AuthLink="DongGyu@islab.re.kr"
+                  LikeQty="612K"
+                />
               </div>
               {/* CTA */}
               <div className="absolute bottom-0 left-0 right-0 h-[352px] bg-gradient-to-t from-white to-transparent">
@@ -764,7 +203,7 @@ const Inspiration = () => {
                     className="btn text-white bg-blue-500 hover:bg-blue-600 shadow-sm mb-6"
                     href="/signup"
                   >
-                    Join The Community
+                    See More MasterPiece
                   </div>
                 </div>
               </div>
