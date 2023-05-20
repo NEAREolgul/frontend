@@ -11,6 +11,7 @@ import Inspiration08 from '../assets/images/inspiration-08.jpg';
 import Inspiration09 from '../assets/images/inspiration-09.jpg';
 import InspirationCategory from './Swiper/InspirationCategory';
 import InspirationImg from './Swiper/InspirationImg';
+import { BiSearchAlt } from 'react-icons/bi';
 
 const Inspiration = (props) => {
   const { List = false } = props;
@@ -40,6 +41,12 @@ const Inspiration = (props) => {
           <div>
             {/* Category buttons */}
             <div className="mb-8">
+              {List && (
+                <div className="searchbox bg-white relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5">
+                  <BiSearchAlt size="2rem" />
+                  <input type="text" className="searchbox-input" />
+                </div>
+              )}
               <div className="flex flex-wrap justify-center md:justify-start -m-1.5">
                 <InspirationCategory
                   CategoryTitle="All"

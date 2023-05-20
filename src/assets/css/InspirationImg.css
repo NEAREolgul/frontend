@@ -13,3 +13,19 @@
     height: 85%;
     align-items: flex-start;
 }
+
+.searchbox {
+    width: 30%;
+    margin-bottom: 2%;
+}
+
+.searchbox-input {
+    width: 100%;
+    border: none;
+}
+
+.searchbox-input:focus {
+    outline: none;
+    border: none;
+    --tw-ring-color: none !important;
+}

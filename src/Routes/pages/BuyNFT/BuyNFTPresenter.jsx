@@ -42,32 +42,19 @@ const BuyNFTPresenter = (props) => {
                 {/* 사용자 정보 */}
               </div>
               <div className="pricebox">
-                <p className="pricebox-p">{nftInfo.content_price}</p>
+                <p className="pricebox-p">Price</p>
                 <p className="pricebox-price">{nftInfo.content_price}</p>
               </div>
               <div className="actionbuttonbox">
-                {nftInfo.is_sell ? (
-                  <Link
-                    className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                    to={{ pathname: '/' }}
-                  >
-                    Buy
-                  </Link>
-                ) : (
-                  <Link className="actionbutton notworkingbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm">
-                    Buy
-                  </Link>
-                )}
                 <Link
                   className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
                   to={{ pathname: '/' }}
                 >
-                  Bid
+                  Buy
                 </Link>
               </div>
             </div>
           </div>
-          <div className="detailinfo">입찰현황 / 거래기록</div>
         </div>
       </div>
     </section>
