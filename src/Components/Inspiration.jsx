@@ -130,19 +130,37 @@ const Inspiration = (props) => {
                   tokenImg.map((i, idx) => {
                     const { metadata } = i;
                     console.log(metadata);
-                    return (
-                      <InspirationImg
-                        StyleArray={arrays[idx % 5]}
-                        category={category}
-                        imgSrc={metadata.media}
-                        authSrc={avatars[idx % 5]}
-                        wh={9}
-                        AuthName={names[idx % 5]}
-                        AuthLink={emails[idx % 5]}
-                        LikeQty={Math.floor(Math.random() * 1000) + 'K'}
-                        Contentprice={Math.floor(Math.random() * 100) + ' NEAR'}
-                      />
-                    );
+                    if (idx === 0) {
+                      return (
+                        <InspirationImg
+                          StyleArray={arrays[idx % 5]}
+                          category={category}
+                          imgSrc={metadata.media}
+                          authSrc={avatars[0]}
+                          wh={9}
+                          AuthName={names[0]}
+                          AuthLink={emails[0]}
+                          LikeQty={Math.floor(Math.random() * 1000) + 'K'}
+                          Contentprice={'90 NEAR'}
+                        />
+                      );
+                    } else {
+                      return (
+                        <InspirationImg
+                          StyleArray={arrays[idx % 5]}
+                          category={category}
+                          imgSrc={metadata.media}
+                          authSrc={avatars[idx % 5]}
+                          wh={9}
+                          AuthName={names[idx % 5]}
+                          AuthLink={emails[idx % 5]}
+                          LikeQty={Math.floor(Math.random() * 1000) + 'K'}
+                          Contentprice={
+                            Math.floor(Math.random() * 100) + ' NEAR'
+                          }
+                        />
+                      );
+                    }
                   })}
               </div>
               {!List && (
