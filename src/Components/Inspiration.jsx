@@ -12,7 +12,8 @@ import Inspiration09 from '../assets/images/inspiration-09.jpg';
 import InspirationCategory from './Swiper/InspirationCategory';
 import InspirationImg from './Swiper/InspirationImg';
 
-const Inspiration = () => {
+const Inspiration = (props) => {
+  const { List = false } = props;
   const [category, setCategory] = useState('0');
   return (
     <section>
@@ -98,6 +99,7 @@ const Inspiration = () => {
                   AuthName="HanHo"
                   AuthLink="Hnaho@islab.re.kr"
                   LikeQty="255K"
+                  Contentprice="$ 10"
                 />
 
                 {/* 2nd Gallery img */}
@@ -110,6 +112,7 @@ const Inspiration = () => {
                   AuthName="Simon"
                   AuthLink="simon@islab.re.kr"
                   LikeQty="677K"
+                  Contentprice="$ 20"
                 />
 
                 {/* 3rd Gallery img */}
@@ -122,6 +125,7 @@ const Inspiration = () => {
                   AuthName="KyeongWoo"
                   AuthLink="KyeongWoo@islab.re.kr"
                   LikeQty="624K"
+                  Contentprice="$ 30"
                 />
 
                 {/* 4th Gallery img */}
@@ -134,6 +138,7 @@ const Inspiration = () => {
                   AuthName="Yohan"
                   AuthLink="Yohan@islab.re.kr"
                   LikeQty="234K"
+                  Contentprice="$ 40"
                 />
 
                 {/* 5th Gallery img */}
@@ -146,6 +151,7 @@ const Inspiration = () => {
                   AuthName="BoGeum"
                   AuthLink="BoGeum@islab.re.kr"
                   LikeQty="555K"
+                  Contentprice="$ 50"
                 />
 
                 {/* 6th Gallery img */}
@@ -158,6 +164,7 @@ const Inspiration = () => {
                   AuthName="JoUk"
                   AuthLink="JoUk@islab.re.kr"
                   LikeQty="9999K"
+                  Contentprice="$ 60"
                 />
 
                 {/* 7th Gallery img */}
@@ -170,6 +177,7 @@ const Inspiration = () => {
                   AuthName="SangBong"
                   AuthLink="SangBong@islab.re.kr"
                   LikeQty="542K"
+                  Contentprice="$ 70"
                 />
 
                 {/* 8th Gallery img */}
@@ -182,6 +190,7 @@ const Inspiration = () => {
                   AuthName="JaeHan"
                   AuthLink="JaeHan@islab.re.kr"
                   LikeQty="12K"
+                  Contentprice="$ 80"
                 />
 
                 {/* 9th Gallery img */}
@@ -194,19 +203,19 @@ const Inspiration = () => {
                   AuthName="DongGyu"
                   AuthLink="DongGyu@islab.re.kr"
                   LikeQty="612K"
+                  Contentprice="$ 90"
                 />
               </div>
-              {/* CTA */}
-              <div className="absolute bottom-0 left-0 right-0 h-[352px] bg-gradient-to-t from-white to-transparent">
-                <div className="flex h-full items-end justify-center">
-                  <div
-                    className="btn text-white bg-blue-500 hover:bg-blue-600 shadow-sm mb-6"
-                    href="/signup"
-                  >
-                    See More MasterPiece
+              {!List && (
+                // CTA
+                <div className="absolute bottom-0 left-0 right-0 h-[352px] bg-gradient-to-t from-white to-transparent">
+                  <div className="flex h-full items-end justify-center">
+                    <div className="btn text-white bg-blue-500 hover:bg-blue-600 shadow-sm mb-6">
+                      <a href="/nftlist">See More MasterPiece</a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
