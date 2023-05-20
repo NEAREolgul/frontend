@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({ isSignedIn, wallet }) => {
+const Header = ({ isSignedIn, wallet, account, signOut }) => {
   // eslint-disable-next-line no-unused-vars
   const [navBar, setNavBar] = useState(true);
+  /* Router */
+  /* State */
+  /* Functions */
+  const handleSignOut = async () => {
+    await signOut();
+  };
+  /* Hooks */
+  /* Render */
   return (
     <header className="absolute w-full z-30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -40,7 +48,7 @@ const Header = ({ isSignedIn, wallet }) => {
                   <li className="ml-3">
                     <Link
                       className="btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                      to={{ pathname: "/signup" }}
+                      to={{ pathname: '/signup' }}
                     >
                       Join The Community
                     </Link>
@@ -50,14 +58,14 @@ const Header = ({ isSignedIn, wallet }) => {
                 <ul className="flex grow justify-end flex-wrap items-center">
                   <li className="ml-3">
                     <div className="btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm">
-                      {wallet.accountId}
+                      {account ? account.accountId : ''}
                     </div>
                   </li>
                   <li>
                     <button
                       className="font-medium text-gray-600 decoration-blue-500 decoration-2 underline-offset-2 hover:underline px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
                       to="/signin"
-                      onClick={() => wallet.signOut()}
+                      onClick={handleSignOut}
                     >
                       Sign Out
                     </button>

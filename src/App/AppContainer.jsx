@@ -1,13 +1,12 @@
-import AppPresenter from "./AppPresenter";
-import "./css/style.css";
-const AppContainer = ({ isSignedIn, contractId, wallet }) => {
-  return (
-    <AppPresenter
-      isSignedIn={isSignedIn}
-      contractId={contractId}
-      wallet={wallet}
-    />
-  );
+import AppPresenter from './AppPresenter';
+import './css/style.css';
+const AppContainer = () => {
+  /* Router */
+  /* State */
+  /* Functions */
+  /* Hooks */
+  /* Render */
+  return <AppPresenter />;
 };
 
 export default AppContainer;

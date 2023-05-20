@@ -11,28 +11,18 @@ import {
   BuyNFT,
 } from './pages';
 
-const IndexRouter = ({ isSignedIn, contractId, wallet }) => {
+const IndexRouter = () => {
   return (
     <Routes>
-      <Route element={<MainLayout isSignedIn={isSignedIn} wallet={wallet} />}>
+      <Route element={<MainLayout />}>
         <Route path="/" element={<Main />} />
-        <Route
-          path="/signup"
-          element={<Signup isSignedIn={isSignedIn} wallet={wallet} />}
-        />
-        <Route
-          path="/signin"
-          element={<Signin isSignedIn={isSignedIn} wallet={wallet} />}
-        />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="/mint" element={<Mint />} />
-        <Route
-          path="/registerartist"
-          element={<RegisterArtist />}
-          isSignedIn={isSignedIn}
-        />
+        <Route path="/registerartist" element={<RegisterArtist />} />
         <Route path="/nftlist" element={<NFTlist />} />
         <Route path="/nftdetail" element={<NFTdetail />} />
-        <Route path="/buynft" element={<BuyNFT />} isSignedIn={isSignedIn} />
+        <Route path="/buynft" element={<BuyNFT />} />
       </Route>
     </Routes>
   );
