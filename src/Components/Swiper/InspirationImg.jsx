@@ -40,7 +40,7 @@ function InspirationImg(props) {
     <a
       className="relative group hover:shadow-xl transition duration-150 ease-in-out"
       style={!StyleArray.includes(category) ? { display: 'none' } : {}}
-      href="#0"
+      href="/nftdetail"
       data-aos="fade-down"
       data-aos-anchor="[data-aos-id-inpspiration]"
     >

@@ -2,6 +2,7 @@ const Buylist = (props) => {
   /* Router */
   /* State */
   const { price, user_nm, authSrc } = props;
+
   /* Hooks */
   /* Functions */
   /* Render */
@@ -10,7 +11,7 @@ const Buylist = (props) => {
       <div className="buylistbox-imgbox">
         <a href="#0">
           <img
-            className="rounded-full shrink-0 mr-3"
+            className="h32 rounded-full shrink-0 mr-3"
             src={authSrc}
             width={32}
             height={32}

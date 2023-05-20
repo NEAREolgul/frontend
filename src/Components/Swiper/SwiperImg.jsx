@@ -1,7 +1,6 @@
 // eslint-disable-next-line react/prop-types
-import Avatar01 from "../../assets/images/carousel-avatar-01.jpg";
 
-const SwiperImg = ({ Carousel }) => {
+const SwiperImg = ({ Carousel, avatar }) => {
   return (
     <div className="swiper-slide h-auto flex flex-col">
       {/* img */}
@@ -18,7 +17,7 @@ const SwiperImg = ({ Carousel }) => {
         <div className="flex items-start -space-x-3 -ml-0.5 mb-4 -mt-5">
           <img
             className="rounded-full border-2 border-white box-content"
-            src={Avatar01}
+            src={avatar}
             width={36}
             height={36}
             alt="Avatar 01"

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import Inspiration from "../../../Components/Inspiration";
-import * as nearAPI from "near-api-js";
-import { useWallet } from "../../../utils/WalletManager";
+import { useEffect, useState } from 'react';
+import Inspiration from '../../../Components/Inspiration';
+import * as nearAPI from 'near-api-js';
+import { useWallet } from '../../../utils/WalletManager';
 
 const NFTlistPresenter = (props) => {
   /* Router */
@@ -17,22 +17,22 @@ const NFTlistPresenter = (props) => {
       const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
       console.log(myKeyStore);
       const connectionConfig = {
-        networkId: "testnet",
+        networkId: 'testnet',
         keyStore: myKeyStore, // first create a key store
-        nodeUrl: "https://rpc.testnet.near.org",
-        walletUrl: "https://wallet.testnet.near.org",
-        helperUrl: "https://helper.testnet.near.org",
-        explorerUrl: "https://explorer.testnet.near.org",
+        nodeUrl: 'https://rpc.testnet.near.org',
+        walletUrl: 'https://wallet.testnet.near.org',
+        helperUrl: 'https://helper.testnet.near.org',
+        explorerUrl: 'https://explorer.testnet.near.org',
       };
       const nearConnection = await connect(connectionConfig);
 
       const act = await nearConnection.account(account);
       const contract = new Contract(
         act, // the account object that is connecting
-        "ismarket.testnet",
+        'ismarket.testnet',
         {
           // name of contract you're connecting to
-          viewMethods: ["nft_tokens"], // view methods do not change state but usually return a value
+          viewMethods: ['nft_tokens'], // view methods do not change state but usually return a value
         }
       );
       const tokens = await contract.nft_tokens({ from_index: 0, limit: 10 });
