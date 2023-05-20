@@ -6,5 +6,8 @@ export default defineConfig({
   define: {
     'process.env': {},
   },
+  build: { commonjsOptions: { transformMixedEsModules: true, include: [] } },
+  optimizeDeps: { disabled: false },
+
   plugins: [react()],
 });

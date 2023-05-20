@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = ({ isSignedIn, wallet, account, signOut }) => {
+  /* Router */
+  const navigate = useNavigate();
+  /* State */
   // eslint-disable-next-line no-unused-vars
   const [navBar, setNavBar] = useState(true);
-  /* Router */
-  /* State */
   /* Functions */
   const handleSignOut = async () => {
     await signOut();
+    navigate('/', { replace: true });
   };
   /* Hooks */
   /* Render */
@@ -57,9 +59,12 @@ const Header = ({ isSignedIn, wallet, account, signOut }) => {
               ) : (
                 <ul className="flex grow justify-end flex-wrap items-center">
                   <li className="ml-3">
-                    <div className="btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm">
+                    <Link
+                      to="/mypage"
+                      className="btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
+                    >
                       {account ? account.accountId : ''}
-                    </div>
+                    </Link>
                   </li>
                   <li>
                     <button
