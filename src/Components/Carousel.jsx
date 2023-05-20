@@ -1,34 +1,34 @@
-import { useEffect } from "react";
-import Carousel01 from "../assets/images/carousel-01.jpg";
-import Carousel02 from "../assets/images/carousel-02.jpg";
-import Carousel03 from "../assets/images/carousel-03.jpg";
-import Carousel04 from "../assets/images/carousel-04.jpg";
-import Carousel05 from "../assets/images/carousel-05.jpg";
-import Carousel06 from "../assets/images/carousel-06.jpg";
-import Carousel07 from "../assets/images/carousel-07.jpg";
-import Carousel08 from "../assets/images/carousel-08.jpg";
-import Avatar01 from "../assets/images/carousel-avatar-01.jpg";
-import Avatar02 from "../assets/images/carousel-avatar-02.jpg";
-import Avatar03 from "../assets/images/carousel-avatar-03.jpg";
-import Avatar04 from "../assets/images/carousel-avatar-04.jpg";
-import Avatar05 from "../assets/images/carousel-avatar-05.jpg";
-import Avatar06 from "../assets/images/carousel-avatar-06.jpg";
-import Avatar07 from "../assets/images/carousel-avatar-07.jpg";
-import Avatar08 from "../assets/images/carousel-avatar-08.jpg";
-import Avatar09 from "../assets/images/carousel-avatar-09.jpg";
-import Avatar10 from "../assets/images/carousel-avatar-10.jpg";
-import Avatar11 from "../assets/images/carousel-avatar-11.jpg";
-import Avatar12 from "../assets/images/carousel-avatar-12.jpg";
-import Avatar13 from "../assets/images/carousel-avatar-13.jpg";
-import Avatar14 from "../assets/images/carousel-avatar-14.jpg";
-import Avatar15 from "../assets/images/carousel-avatar-15.jpg";
-import Avatar16 from "../assets/images/carousel-avatar-16.jpg";
-import Avatar17 from "../assets/images/carousel-avatar-17.jpg";
-import Avatar18 from "../assets/images/carousel-avatar-18.jpg";
-import Swiper, { Navigation } from "swiper";
+import { useEffect } from 'react';
+import Carousel01 from '../assets/images/carousel-01.jpg';
+import Carousel02 from '../assets/images/carousel-02.jpg';
+import Carousel03 from '../assets/images/carousel-03.jpg';
+import Carousel04 from '../assets/images/carousel-04.jpg';
+import Carousel05 from '../assets/images/carousel-05.jpg';
+import Carousel06 from '../assets/images/carousel-06.jpg';
+import Carousel07 from '../assets/images/carousel-07.jpg';
+import Carousel08 from '../assets/images/carousel-08.jpg';
+import Avatar01 from '../assets/images/carousel-avatar-01.jpg';
+import Avatar02 from '../assets/images/carousel-avatar-02.jpg';
+import Avatar03 from '../assets/images/carousel-avatar-03.jpg';
+import Avatar04 from '../assets/images/carousel-avatar-04.jpg';
+import Avatar05 from '../assets/images/carousel-avatar-05.jpg';
+import Avatar06 from '../assets/images/carousel-avatar-06.jpg';
+import Avatar07 from '../assets/images/carousel-avatar-07.jpg';
+import Avatar08 from '../assets/images/carousel-avatar-08.jpg';
+import Avatar09 from '../assets/images/carousel-avatar-09.jpg';
+import Avatar10 from '../assets/images/carousel-avatar-10.jpg';
+import Avatar11 from '../assets/images/carousel-avatar-11.jpg';
+import Avatar12 from '../assets/images/carousel-avatar-12.jpg';
+import Avatar13 from '../assets/images/carousel-avatar-13.jpg';
+import Avatar14 from '../assets/images/carousel-avatar-14.jpg';
+import Avatar15 from '../assets/images/carousel-avatar-15.jpg';
+import Avatar16 from '../assets/images/carousel-avatar-16.jpg';
+import Avatar17 from '../assets/images/carousel-avatar-17.jpg';
+import Avatar18 from '../assets/images/carousel-avatar-18.jpg';
+import Swiper, { Navigation } from 'swiper';
 
-import "swiper/swiper.min.css";
-import SwiperImg from "./Swiper/SwiperImg";
+import 'swiper/swiper.min.css';
+import SwiperImg from './Swiper/SwiperImg';
 Swiper.use([Navigation]);
 
 const carousel = [
@@ -42,10 +42,12 @@ const carousel = [
   Carousel08,
 ];
 
-const Carousel = () => {
+const Carousel = (props) => {
+  const { title = '' } = props;
+
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
-    const carousel = new Swiper(".carousel", {
+    const carousel = new Swiper('.carousel', {
       breakpoints: {
         320: {
           slidesPerView: 1,
@@ -64,8 +66,8 @@ const Carousel = () => {
       spaceBetween: 24,
       watchSlidesProgress: true,
       navigation: {
-        nextEl: ".carousel-next",
-        prevEl: ".carousel-prev",
+        nextEl: '.carousel-next',
+        prevEl: '.carousel-prev',
       },
     });
   }, []);
@@ -76,9 +78,7 @@ const Carousel = () => {
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 font-cabinet-grotesk text-gray-100">
-              Trending collections
-            </h2>
+            <h2 className="h2 font-cabinet-grotesk text-gray-100">{title}</h2>
           </div>
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
           {/* * Custom styles in src/css/additional-styles/theme.scss */}

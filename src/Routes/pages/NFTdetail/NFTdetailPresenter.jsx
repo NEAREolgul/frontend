@@ -3,6 +3,7 @@ import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
 import '../../../assets/css/Nftdetail.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import Carousel from '../../../Components/Carousel';
 
 const NFTdetailPresenter = (props) => {
   /* Router */
@@ -21,7 +22,7 @@ const NFTdetailPresenter = (props) => {
   /* Functions */
   /* Render */
   return (
-    <section className="mt5 h100vh bg-gray-800">
+    <section className="mt5 bg-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt5 py-12 md:pt-32 md:pb-20">
           <div className="relative flex flexrow">
@@ -68,6 +69,9 @@ const NFTdetailPresenter = (props) => {
             </div>
           </div>
           <div className="detailinfo">입찰현황 / 거래기록</div>
+          <div>
+            <Carousel />
+          </div>
         </div>
       </div>
     </section>
