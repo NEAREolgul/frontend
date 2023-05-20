@@ -7,7 +7,6 @@ const MainLayout = () => {
   /* State */
   const { wallet, isSignedIn, account, signOut } = useWallet();
 
-  console.log(wallet);
   /* Functions */
   /* Hooks */
   /* Render */
