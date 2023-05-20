@@ -1,0 +1,26 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.nearicon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.bidsearchbox {
+    width: 55% !important;
+    margin-bottom: 2%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.bidsearchbox-input {
+    margin-left: 2% !important;
+    padding: 0 !important;
+}
+
+.fw {
+    color: white;
+}

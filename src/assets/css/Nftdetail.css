@@ -85,6 +85,11 @@
     display: flex;
 }
 
+.ownerbox-bid-p {
+    width: 30%;
+    display: flex;
+}
+
 .ownerbox-info {
     display: flex;
 }
@@ -102,6 +107,11 @@
 
 .pricebox-p {
     width: 20%;
+    display: flex;
+}
+
+.pricebox-bid-p {
+    width: 30%;
     display: flex;
 }
 

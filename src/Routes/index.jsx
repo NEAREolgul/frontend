@@ -9,6 +9,7 @@ import {
   NFTlist,
   NFTdetail,
   BuyNFT,
+  BidNFT,
 } from './pages';
 
 const IndexRouter = () => {
@@ -23,6 +24,7 @@ const IndexRouter = () => {
         <Route path="/nftlist" element={<NFTlist />} />
         <Route path="/nftdetail" element={<NFTdetail />} />
         <Route path="/buynft" element={<BuyNFT />} />
+        <Route path="/bidnft" element={<BidNFT />} />
       </Route>
     </Routes>
   );

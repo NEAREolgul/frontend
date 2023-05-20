@@ -42,8 +42,8 @@ const Inspiration = (props) => {
             {/* Category buttons */}
             <div className="mb-8">
               {List && (
-                <div className="searchbox bg-white relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5">
-                  <BiSearchAlt size="2rem" />
+                <div className="searchbox mb2 bg-white relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5">
+                  <BiSearchAlt size="2rem" style={{ margin: 'auto' }} />
                   <input type="text" className="searchbox-input" />
                 </div>
               )}
