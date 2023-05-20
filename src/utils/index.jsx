@@ -1,5 +1,7 @@
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 export const HOST_DOMAIN = import.meta.env.VITE_HOST_DOMAIN;
+export const EDITOR_URL = import.meta.env.VITE_EDITOR_URL;
+export const AI_URL = import.meta.env.VITE_AI_URL;
 export { default as APIManager } from './APIManager';
 
 /**
