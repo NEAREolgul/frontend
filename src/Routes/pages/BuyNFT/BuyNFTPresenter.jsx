@@ -1,12 +1,12 @@
+import { useState } from 'react';
 import NFTdetailImg from '../../../Components/NftdetailImg';
 import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
-import '../../../assets/css/Nftdetail.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
-const NFTdetailPresenter = (props) => {
+const BuyNFTPresenter = (props) => {
   /* Router */
   /* State */
+  const { isSignedIn } = props;
   const [nftInfo, setNftInfo] = useState({
     content_title: 'Title',
     user_nm: 'HanHo',
@@ -42,7 +42,7 @@ const NFTdetailPresenter = (props) => {
                 {/* 사용자 정보 */}
               </div>
               <div className="pricebox">
-                <p className="pricebox-p">Price</p>
+                <p className="pricebox-p">{nftInfo.content_price}</p>
                 <p className="pricebox-price">{nftInfo.content_price}</p>
               </div>
               <div className="actionbuttonbox">
@@ -74,13 +74,4 @@ const NFTdetailPresenter = (props) => {
   );
 };
 
-export default NFTdetailPresenter;
-
-// 이름
-// 가격
-// 작가
-// 판매여부
-// 로그
-
-// 구매
-// 제안
+export default BuyNFTPresenter;
