@@ -1,15 +1,15 @@
-import NFTdetailImg from '../../../Components/NftdetailImg';
-import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
-import '../../../assets/css/Nftdetail.css';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Carousel from '../../../Components/Carousel';
-import Buylist from '../../../Components/Buylist';
-import PostAuthor01 from '../../../assets/images/blog-author-01.jpg';
-import PostAuthor02 from '../../../assets/images/blog-author-02.jpg';
-import PostAuthor03 from '../../../assets/images/blog-author-03.jpg';
-import PostAuthor04 from '../../../assets/images/blog-author-04.jpg';
-import PostAuthor05 from '../../../assets/images/blog-author-05.jpg';
+import NFTdetailImg from "../../../Components/NftdetailImg";
+import Inspiration01 from "../../../assets/images/inspiration-01.jpg";
+import "../../../assets/css/Nftdetail.css";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Carousel from "../../../Components/Carousel";
+import Buylist from "../../../Components/Buylist";
+import PostAuthor01 from "../../../assets/images/blog-author-01.jpg";
+import PostAuthor02 from "../../../assets/images/blog-author-02.jpg";
+import PostAuthor03 from "../../../assets/images/blog-author-03.jpg";
+import PostAuthor04 from "../../../assets/images/blog-author-04.jpg";
+import PostAuthor05 from "../../../assets/images/blog-author-05.jpg";
 
 const NFTdetailPresenter = (props) => {
   /* Router */
@@ -18,14 +18,14 @@ const NFTdetailPresenter = (props) => {
   const [reversebuyList, setReversebuyList] = useState(buyList);
   const [reversebidList, setReversebidList] = useState(bidList);
   const [nftInfo, setNftInfo] = useState({
-    content_title: 'SS Face',
-    user_nm: 'Bogeum',
+    content_title: "SS Face",
+    user_nm: "Bogeum",
     content_desc:
-      'Its a NFT of a face reminiscent of a beautiful solar system in an empty universe that makes us realize that we are beautiful',
-    content_price: '$ 90',
-    is_sell: false,
-    content_paint: 'What is this?',
-    created_at: '2020-12-20',
+      "Its a NFT of a face reminiscent of a beautiful solar system in an empty universe that makes us realize that we are beautiful",
+    content_price: "$ 90",
+    is_sell: true,
+    content_paint: "What is this?",
+    created_at: "2020-12-20",
   });
   /* Hooks */
   useEffect(() => {
@@ -66,7 +66,7 @@ const NFTdetailPresenter = (props) => {
                 {nftInfo.is_sell ? (
                   <Link
                     className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                    to={{ pathname: '/buynft' }}
+                    to={{ pathname: "/buynft" }}
                   >
                     Buy
                   </Link>
@@ -77,7 +77,7 @@ const NFTdetailPresenter = (props) => {
                 )}
                 <Link
                   className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                  to={{ pathname: '/bidnft' }}
+                  to={{ pathname: "/bidnft" }}
                 >
                   Bid
                 </Link>
