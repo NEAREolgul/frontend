@@ -6,6 +6,7 @@ import {
   Signup,
   Mint,
   RegisterArtist,
+  NFTcreate,
   NFTlist,
   NFTdetail,
   BuyNFT,
@@ -23,6 +24,7 @@ const IndexRouter = () => {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mint" element={<Mint />} />
         <Route path="/registerartist" element={<RegisterArtist />} />
+        <Route path="/nftcreate" element={<NFTcreate />} />
         <Route path="/nftlist" element={<NFTlist />} />
         <Route path="/nftdetail" element={<NFTdetail />} />
         <Route path="/buynft" element={<BuyNFT />} />
