@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const AddArtistPresenter = (props) => {
+const RegisterArtistPresenter = (props) => {
   /* Router */
   /* State */
 
-  const { userInfo, setUserInfo } = useState({
+  const init = {
     user_nm: 'HanHo',
-    near_addr: '',
-  });
+    near_addr: '0x987avew897av86ew8v96',
+  };
+
+  const [userInfo, setUserInfo] = useState(init);
   /* Hooks */
   /* Functions */
   useEffect(() => {
+    setUserInfo(init);
     return;
-  }, []);
+  }, [init]);
 
   /* Render */
   return (
@@ -23,7 +26,7 @@ const AddArtistPresenter = (props) => {
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
             <div className="max-w-3xl mx-auto text-center pb-12">
               <h1 className="h2 font-cabinet-grotesk">
-                Register as Artist and Make your Masterpiece!!
+                Register as Artist <br /> and <br /> Make your Masterpiece!!
               </h1>
             </div>
             {/* Form */}
@@ -39,7 +42,7 @@ const AddArtistPresenter = (props) => {
                   <input
                     id="user_nm"
                     type="text"
-                    value={userInfo}
+                    value={userInfo.user_nm}
                     className="form-input w-full text-gray-800"
                     required
                   />
@@ -49,14 +52,14 @@ const AddArtistPresenter = (props) => {
                 <div className="w-full">
                   <label
                     className="block text-gray-500 text-sm font-medium mb-1"
-                    htmlFor="Email"
+                    htmlFor="address"
                   >
-                    Email
+                    Near Address
                   </label>
                   <input
                     id="near_addr"
-                    type="email"
-                    value={userInfo}
+                    type="text"
+                    value={userInfo.near_addr}
                     className="form-input w-full text-gray-800"
                     required
                   />
@@ -90,4 +93,4 @@ const AddArtistPresenter = (props) => {
   );
 };
 
-export default AddArtistPresenter;
+export default RegisterArtistPresenter;
