@@ -1,21 +1,12 @@
-import { useState } from 'react';
-import Author01 from '../assets/images/author-01.jpg';
-import Inspiration01 from '../assets/images/inspiration-01.jpg';
-import Inspiration02 from '../assets/images/inspiration-02.jpg';
-import Inspiration03 from '../assets/images/inspiration-03.jpg';
-import Inspiration04 from '../assets/images/inspiration-04.jpg';
-import Inspiration05 from '../assets/images/inspiration-05.jpg';
-import Inspiration06 from '../assets/images/inspiration-06.jpg';
-import Inspiration07 from '../assets/images/inspiration-07.jpg';
-import Inspiration08 from '../assets/images/inspiration-08.jpg';
-import Inspiration09 from '../assets/images/inspiration-09.jpg';
-import InspirationCategory from './Swiper/InspirationCategory';
-import InspirationImg from './Swiper/InspirationImg';
-import { BiSearchAlt } from 'react-icons/bi';
+import { useState } from "react";
+import Author01 from "../assets/images/author-01.jpg";
+import InspirationCategory from "./Swiper/InspirationCategory";
+import InspirationImg from "./Swiper/InspirationImg";
+import { BiSearchAlt } from "react-icons/bi";
 
 const Inspiration = (props) => {
-  const { List = false } = props;
-  const [category, setCategory] = useState('0');
+  const { List = false, tokenImg } = props;
+  const [category, setCategory] = useState("0");
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -43,7 +34,7 @@ const Inspiration = (props) => {
             <div className="mb-8">
               {List && (
                 <div className="searchbox mb2 bg-white relative font-medium text-gray-800 text-sm pl-3 pr-1.5 py-1.5 border rounded-full inline-flex m-1.5">
-                  <BiSearchAlt size="2rem" style={{ margin: 'auto' }} />
+                  <BiSearchAlt size="2rem" style={{ margin: "auto" }} />
                   <input type="text" className="searchbox-input" />
                 </div>
               )}
@@ -97,121 +88,24 @@ const Inspiration = (props) => {
                 data-aos-id-inpspiration
               >
                 {/* 1st Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '1', '3']}
-                  category={category}
-                  imgSrc={Inspiration01}
-                  authSrc={Author01}
-                  wh={9}
-                  AuthName="HanHo"
-                  AuthLink="Hnaho@islab.re.kr"
-                  LikeQty="255K"
-                  Contentprice="$ 10"
-                />
-
-                {/* 2nd Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '2', '3']}
-                  delay="100"
-                  category={category}
-                  imgSrc={Inspiration02}
-                  authSrc={Author01}
-                  AuthName="Simon"
-                  AuthLink="simon@islab.re.kr"
-                  LikeQty="677K"
-                  Contentprice="$ 20"
-                />
-
-                {/* 3rd Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '1', '3', '4']}
-                  delay="200"
-                  category={category}
-                  imgSrc={Inspiration03}
-                  authSrc={Author01}
-                  AuthName="KyeongWoo"
-                  AuthLink="KyeongWoo@islab.re.kr"
-                  LikeQty="624K"
-                  Contentprice="$ 30"
-                />
-
-                {/* 4th Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '1', '2', '4']}
-                  delay="300"
-                  category={category}
-                  imgSrc={Inspiration04}
-                  authSrc={Author01}
-                  AuthName="Yohan"
-                  AuthLink="Yohan@islab.re.kr"
-                  LikeQty="234K"
-                  Contentprice="$ 40"
-                />
-
-                {/* 5th Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '1', '2']}
-                  delay="400"
-                  category={category}
-                  imgSrc={Inspiration05}
-                  authSrc={Author01}
-                  AuthName="BoGeum"
-                  AuthLink="BoGeum@islab.re.kr"
-                  LikeQty="555K"
-                  Contentprice="$ 50"
-                />
-
-                {/* 6th Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '1', '2', '3', '4']}
-                  delay="500"
-                  category={category}
-                  imgSrc={Inspiration06}
-                  authSrc={Author01}
-                  AuthName="JoUk"
-                  AuthLink="JoUk@islab.re.kr"
-                  LikeQty="9999K"
-                  Contentprice="$ 60"
-                />
-
-                {/* 7th Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '1', '3', '4']}
-                  delay="600"
-                  category={category}
-                  imgSrc={Inspiration07}
-                  authSrc={Author01}
-                  AuthName="SangBong"
-                  AuthLink="SangBong@islab.re.kr"
-                  LikeQty="542K"
-                  Contentprice="$ 70"
-                />
-
-                {/* 8th Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '2', '3', '4']}
-                  delay="700"
-                  category={category}
-                  imgSrc={Inspiration08}
-                  authSrc={Author01}
-                  AuthName="JaeHan"
-                  AuthLink="JaeHan@islab.re.kr"
-                  LikeQty="12K"
-                  Contentprice="$ 80"
-                />
-
-                {/* 9th Gallery img */}
-                <InspirationImg
-                  StyleArray={['0', '2', '4']}
-                  delay="800"
-                  category={category}
-                  imgSrc={Inspiration09}
-                  authSrc={Author01}
-                  AuthName="DongGyu"
-                  AuthLink="DongGyu@islab.re.kr"
-                  LikeQty="612K"
-                  Contentprice="$ 90"
-                />
+                {tokenImg &&
+                  tokenImg.map((i) => {
+                    const { metadata } = i;
+                    console.log(metadata);
+                    return (
+                      <InspirationImg
+                        StyleArray={["0", "1", "3"]}
+                        category={category}
+                        imgSrc={metadata.media}
+                        authSrc={Author01}
+                        wh={9}
+                        AuthName="HanHo"
+                        AuthLink="Hnaho@islab.re.kr"
+                        LikeQty="255K"
+                        Contentprice="$ 10"
+                      />
+                    );
+                  })}
               </div>
               {!List && (
                 // CTA
