@@ -1,12 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import Avatar from "../../../assets/images/join-avatar.jpg";
+import { useEffect, useState } from "react";
 
-const SignupPresenter = () => {
-  const handleTest = async () => {
-    const isSignedIn = await wallet.startUp();
-    console.log(isSignedIn);
+const SignupPresenter = ({ wallet, isSignedIn }) => {
+  const [accountId, setAccountId] = useState("");
+
+  const handleWalletCall = async () => {
     await wallet.signIn();
   };
+
+  useEffect(() => {
+    setAccountId(wallet.accountId);
+  }, [wallet]);
+
   return (
     <main className="grow bg-gray-50">
       <section>
@@ -37,69 +43,53 @@ const SignupPresenter = () => {
                 You've been invited by Mark Hooker to join Creative
               </h1>
             </div>
-            {/* Form */}
             <div className="max-w-sm mx-auto">
               <div className="flex flex-wrap mb-4">
                 <div className="w-full">
-                  <label
-                    className="block text-gray-500 text-sm font-medium mb-1"
-                    htmlFor="email"
-                  >
+                  <label className="block text-gray-500 text-sm font-medium mb-1">
                     User ID
                   </label>
                   <input
                     id="user_id"
                     type="text"
                     className="form-input w-full text-gray-800"
-                    required
                   />
                 </div>
               </div>
               <div className="flex flex-wrap mb-4">
                 <div className="w-full">
-                  <label
-                    className="block text-gray-500 text-sm font-medium mb-1"
-                    htmlFor="password"
-                  >
+                  <label className="block text-gray-500 text-sm font-medium mb-1">
                     Password
                   </label>
                   <input
                     id="password"
                     type="password"
                     className="form-input w-full text-gray-800"
-                    required
                   />
                 </div>
               </div>
               <div className="flex flex-wrap mb-4">
                 <div className="w-full">
-                  <label
-                    className="block text-gray-500 text-sm font-medium mb-1"
-                    htmlFor="username"
-                  >
+                  <label className="block text-gray-500 text-sm font-medium mb-1">
                     User Nickname
                   </label>
                   <input
                     id="nickname"
                     type="text"
                     className="form-input w-full text-gray-800"
-                    required
                   />
                 </div>
               </div>
               <div className="flex flex-wrap mb-4">
                 <div className="w-full">
-                  <label
-                    className="block text-gray-500 text-sm font-medium mb-1"
-                    htmlFor="name"
-                  >
+                  <label className="block text-gray-500 text-sm font-medium mb-1">
                     Near Wallet Address
                   </label>
                   <input
                     id="wallet_address"
                     type="text"
                     className="form-input w-full text-gray-800"
-                    required
+                    value={accountId ? accountId : ""}
                   />
                 </div>
               </div>
@@ -111,43 +101,16 @@ const SignupPresenter = () => {
                   Go to Login
                 </Link>
                 <div className="ml-2">
-                  <button className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm">
+                  <button
+                    className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm"
+                    onClick={handleWalletCall}
+                  >
                     Import Wallet
                   </button>
                 </div>
               </div>
-              {/* <div className="mt-5">
-                  <label className="flex items-start">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox mt-0.5"
-                      defaultChecked
-                    />
-                    <span className="text-sm text-gray-500 ml-3">
-                      I accept the{" "}
-                      <a
-                        className="underline hover:decoration-blue-500 underline-offset-2 hover:underline"
-                        href="#0"
-                      >
-                        terms
-                      </a>{" "}
-                      and{" "}
-                      <a
-                        className="underline hover:decoration-blue-500 underline-offset-2 hover:underline"
-                        href="#0"
-                      >
-                        privacy policy
-                      </a>
-                      .
-                    </span>
-                  </label>
-                </div> */}
+
               <div className="flex items-center my-6">
-                <div
-                  className="border-t border-gray-200 grow"
-                  aria-hidden="true"
-                />
-                {/* <div className="text-sm text-gray-500 italic">or</div> */}
                 <div
                   className="border-t border-gray-200 grow"
                   aria-hidden="true"
@@ -155,10 +118,7 @@ const SignupPresenter = () => {
               </div>
               <div className="flex flex-wrap">
                 <div className="w-full">
-                  <button
-                    className="btn-sm text-white bg-[#1D9BF0] hover:bg-[#1A90DF] w-full relative flex items-center"
-                    onClick={handleTest}
-                  >
+                  <button className="btn-sm text-white bg-[#1D9BF0] hover:bg-[#1A90DF] w-full relative flex items-center">
                     Join
                   </button>
                 </div>
