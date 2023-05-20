@@ -1,17 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const SigninPresenter = ({ wallet, isSignedIn, walletSelect }) => {
+const SigninPresenter = ({ wallet, isSignedIn, walletSelect, signIn }) => {
+  /* Router */
   const navigate = useNavigate();
+
+  /* State */
+  const initialState = {
+    user_id: '',
+    user_pw: '',
+    near_addr: '',
+  };
+  const [loginInfo, setLoginInfo] = useState(initialState);
+
+  /* Functions */
+  const handleLoginInfo = (e) => {
+    setLoginInfo({ ...loginInfo, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await signIn(loginInfo);
+    if (result) {
+      setLoginInfo(initialState);
+      return true;
+    }
+    return false;
+  };
 
   const handleSignIn = async () => {
     await walletSelect();
   };
+
+  /* Hooks */
   useEffect(() => {
     if (isSignedIn) {
       navigate('/');
     }
   }, [isSignedIn]);
+
+  /* Render */
 
   return (
     <main className="grow bg-gray-50">
@@ -24,21 +52,24 @@ const SigninPresenter = ({ wallet, isSignedIn, walletSelect }) => {
               </h1>
             </div>
             {/* Form */}
-            <div className="max-w-sm mx-auto">
-              <form>
+            <div className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className="flex flex-wrap mb-4">
                   <div className="w-full">
                     <label
                       className="block text-gray-500 text-sm font-medium mb-1"
                       htmlFor="email"
                     >
-                      Email
+                      User ID
                     </label>
                     <input
                       id="email"
-                      type="email"
+                      name="user_id"
+                      type="text"
                       className="form-input w-full text-gray-800"
                       required
+                      value={loginInfo.user_id}
+                      onChange={handleLoginInfo}
                     />
                   </div>
                 </div>
@@ -52,9 +83,12 @@ const SigninPresenter = ({ wallet, isSignedIn, walletSelect }) => {
                     </label>
                     <input
                       id="password"
+                      name="user_pw"
                       type="password"
                       className="form-input w-full text-gray-800"
                       required
+                      value={loginInfo.user_pw}
+                      onChange={handleLoginInfo}
                     />
                   </div>
                 </div>
@@ -66,7 +100,10 @@ const SigninPresenter = ({ wallet, isSignedIn, walletSelect }) => {
                     Join The Community
                   </Link>
                   <div className="ml-2">
-                    <button className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm">
+                    <button
+                      type="submit"
+                      className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm"
+                    >
                       Sign In To Creative
                     </button>
                   </div>

@@ -4,6 +4,8 @@ import { setupWalletSelector } from '@near-wallet-selector/core';
 import { setupModal } from '@near-wallet-selector/modal-ui';
 import { setupNearWallet } from '@near-wallet-selector/near-wallet';
 import '@near-wallet-selector/modal-ui/styles.css';
+import { HOST_DOMAIN, deleteCookie, setCookie } from '.';
+import UserAPI from '../API/module/UserAPI';
 
 export const CONTRACT_ADDRESS = process.env.VITE_CONTRACT_NAME;
 
@@ -24,16 +26,8 @@ const WalletManager = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [selector, setSelector] = useState();
   const [account, setAccount] = useState();
+  const [userInfo, setUserInfo] = useState();
   /* Functions */
-  /* Hooks */
-  useEffect(() => {
-    handleStartup();
-  }, []);
-
-  useEffect(() => {
-    handleGetAccount();
-  }, [selector]);
-
   /**
    * 지갑 초기화
    * --
@@ -77,6 +71,17 @@ const WalletManager = ({ children }) => {
     setIsSignedIn(selector.isSignedIn());
     setWallet(_wallet);
     setAccount(accounts);
+
+    const sess = await UserAPI.getUserByAddr(accounts.accountId);
+
+    const ss = JSON.stringify(sess);
+    setCookie('NEARFace', ss);
+    setUserInfo(sess);
+  };
+
+  const handleSignInWallet = async () => {
+    const wallet = await selector.wallet('near-wallet');
+    const accounts = await wallet.signIn({ contractId: 'ongdv.testnet' });
   };
 
   /**
@@ -94,7 +99,16 @@ const WalletManager = ({ children }) => {
     await handleStartup();
     setIsSignedIn(false);
     setAccount();
+    deleteCookie('NEARFace', { path: '/', domain: HOST_DOMAIN });
   };
+  /* Hooks */
+  useEffect(() => {
+    handleStartup();
+  }, []);
+
+  useEffect(() => {
+    handleGetAccount();
+  }, [selector]);
 
   /* Render */
   return (
@@ -103,8 +117,10 @@ const WalletManager = ({ children }) => {
         wallet: wallet,
         isSignedIn,
         account,
+        userInfo,
         startup: handleStartup,
         walletSelect: handleWalletSelect,
+        signinWallet: handleSignInWallet,
         signOut: handleSignOut,
       }}
     >
