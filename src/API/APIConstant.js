@@ -7,6 +7,7 @@ const USERAPI = {
 };
 
 const CONTENTAPI = {
+  CREATE_CONTENT: `${BASE_URL}/content`,
   GET_CONTENT_BY_USER: `${BASE_URL}/content/user/:user_id`,
 };
 
