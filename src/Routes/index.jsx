@@ -1,6 +1,7 @@
-import { Route, Routes } from "react-router-dom";
-import { MainLayout } from "../Layout";
-import { Main, Signin, Signup } from "./pages";
+
+import { Route, Routes } from 'react-router-dom';
+import { MainLayout } from '../Layout';
+import { Main, Signin, Signup, AddArtist } from './pages';
 const IndexRouter = ({ isSignedIn, contractId, wallet }) => {
   return (
     <Routes>
@@ -14,6 +15,10 @@ const IndexRouter = ({ isSignedIn, contractId, wallet }) => {
           path="/signin"
           element={<Signin isSignedIn={isSignedIn} wallet={wallet} />}
         />
+        <Route path="/addartist" element={<AddArtist />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/addartist" element={<AddArtist />} />
       </Route>
     </Routes>
   );

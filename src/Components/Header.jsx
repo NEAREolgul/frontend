@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = ({ isSignedIn, wallet }) => {
   // eslint-disable-next-line no-unused-vars
