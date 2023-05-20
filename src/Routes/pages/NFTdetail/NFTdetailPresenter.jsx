@@ -50,7 +50,7 @@ const NFTdetailPresenter = (props) => {
                 {nftInfo.is_sell ? (
                   <Link
                     className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                    to={{ pathname: '/' }}
+                    to={{ pathname: '/buynft' }}
                   >
                     Buy
                   </Link>
@@ -61,7 +61,7 @@ const NFTdetailPresenter = (props) => {
                 )}
                 <Link
                   className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                  to={{ pathname: '/' }}
+                  to={{ pathname: '/bidnft' }}
                 >
                   Bid
                 </Link>

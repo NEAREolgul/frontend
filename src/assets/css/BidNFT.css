@@ -24,3 +24,43 @@ input[type="number"]::-webkit-inner-spin-button {
 .fw {
     color: white;
 }
+
+.h100 {
+    height: 100% !important;
+}
+
+.section {
+    min-height: calc( 100vh - 80px ) !important; 
+}
+
+.box {
+    display: flex;
+}
+
+.status {
+    height: 300px;
+    margin: 0 5%;
+    padding: 4%;
+    width: 49%;
+}
+
+.status-header {
+    width: 80%;
+    border-bottom: 1px solid #3b82f6;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #3b82f6;
+    margin-bottom: 2%;
+}
+
+.buylistbox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 1% 0;
+}
+
+.buylistbox-imgbox {
+    display: flex;
+    align-items: center;
+}
