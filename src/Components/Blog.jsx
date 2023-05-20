@@ -41,7 +41,7 @@ const Blog = () => {
                       className="inline-block decoration-blue-500 decoration-2 underline-offset-2 hover:underline"
                       href="#0"
                     >
-                      Concept Art &amp; Illustrations by Stef Euphoria
+                      Concept Art. Illustrations by Stef Euphoria
                     </a>
                   </h3>
                 </header>
