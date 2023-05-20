@@ -42,8 +42,9 @@ const RegisterArtistPresenter = (props) => {
                   <input
                     id="user_nm"
                     type="text"
-                    value={userInfo.user_nm}
+                    defaultValue={userInfo.user_nm}
                     className="form-input w-full text-gray-800"
+                    readOnly
                     required
                   />
                 </div>
@@ -59,8 +60,9 @@ const RegisterArtistPresenter = (props) => {
                   <input
                     id="near_addr"
                     type="text"
-                    value={userInfo.near_addr}
+                    defaultValue={userInfo.near_addr}
                     className="form-input w-full text-gray-800"
+                    readOnly
                     required
                   />
                 </div>

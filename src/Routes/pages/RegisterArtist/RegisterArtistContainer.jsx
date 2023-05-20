@@ -1,9 +1,15 @@
 import RegisterArtistPresenter from './RegisterArtistPresenter';
+import { useEffect } from 'react';
 
-const RegisterArtistContainer = () => {
+const RegisterArtistContainer = ({ isSignedIn } = props) => {
   /* Router */
   /* State */
   /* Hooks */
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate('/');
+    }
+  }, [isSignedIn]);
   /* Functions */
   /* Render */
   return <RegisterArtistPresenter />;
