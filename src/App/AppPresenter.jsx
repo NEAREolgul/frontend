@@ -1,13 +1,7 @@
-import IndexRouter from "../Routes";
+import IndexRouter from '../Routes';
 
-const AppPresenter = ({ isSignedIn, contractId, wallet }) => {
-  return (
-    <IndexRouter
-      isSignedIn={isSignedIn}
-      contractId={contractId}
-      wallet={wallet}
-    />
-  );
+const AppPresenter = () => {
+  return <IndexRouter />;
 };
 
 export default AppPresenter;

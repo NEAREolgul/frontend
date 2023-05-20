@@ -1,20 +1,20 @@
 /* A helper file that simplifies using the wallet selector */
 // near api js
-import { providers } from "near-api-js";
+import { providers } from 'near-api-js';
 
 // wallet selector UI
-import "@near-wallet-selector/modal-ui/styles.css";
-import { setupModal } from "@near-wallet-selector/modal-ui";
-import LedgerIconUrl from "@near-wallet-selector/ledger/assets/ledger-icon.png";
-import MyNearIconUrl from "@near-wallet-selector/my-near-wallet/assets/my-near-wallet-icon.png";
+import '@near-wallet-selector/modal-ui/styles.css';
+import { setupModal } from '@near-wallet-selector/modal-ui';
+import LedgerIconUrl from '@near-wallet-selector/ledger/assets/ledger-icon.png';
+import MyNearIconUrl from '@near-wallet-selector/my-near-wallet/assets/my-near-wallet-icon.png';
 
 // wallet selector options
-import { setupWalletSelector } from "@near-wallet-selector/core";
-import { setupLedger } from "@near-wallet-selector/ledger";
-import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
+import { setupWalletSelector } from '@near-wallet-selector/core';
+import { setupLedger } from '@near-wallet-selector/ledger';
+import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 
-const THIRTY_TGAS = "30000000000000";
-const NO_DEPOSIT = "0";
+const THIRTY_TGAS = '30000000000000';
+const NO_DEPOSIT = '0';
 
 // Wallet that simplifies using the wallet selector
 export class Wallet {
@@ -23,13 +23,13 @@ export class Wallet {
   network;
   createAccessKeyFor;
 
-  constructor({ createAccessKeyFor = undefined, network = "testnet" }) {
+  constructor({ createAccessKeyFor = undefined, network = 'testnet' }) {
     // Login to a wallet passing a contractId will create a local
     // key, so the user skips signing non-payable transactions.
     // Omitting the accountId will result in the user being
     // asked to sign all transactions.
     this.createAccessKeyFor = createAccessKeyFor;
-    this.network = "testnet";
+    this.network = network;
   }
 
   // To be called when the website loads
@@ -55,7 +55,7 @@ export class Wallet {
 
   // Sign-in method
   signIn() {
-    const description = "Please select a wallet to sign in.";
+    const description = 'Please select a wallet to sign in.';
     const modal = setupModal(this.walletSelector, {
       contractId: this.createAccessKeyFor,
       description,
@@ -76,11 +76,11 @@ export class Wallet {
     const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
 
     let res = await provider.query({
-      request_type: "call_function",
+      request_type: 'call_function',
       account_id: contractId,
       method_name: method,
-      args_base64: Buffer.from(JSON.stringify(args)).toString("base64"),
-      finality: "optimistic",
+      args_base64: Buffer.from(JSON.stringify(args)).toString('base64'),
+      finality: 'optimistic',
     });
     return JSON.parse(Buffer.from(res.result).toString());
   }
@@ -99,7 +99,7 @@ export class Wallet {
       receiverId: contractId,
       actions: [
         {
-          type: "FunctionCall",
+          type: 'FunctionCall',
           params: {
             methodName: method,
             args,
@@ -117,7 +117,7 @@ export class Wallet {
     const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
 
     // Retrieve transaction result from the network
-    const transaction = await provider.txStatus(txhash, "unnused");
+    const transaction = await provider.txStatus(txhash, 'unnused');
     return providers.getTransactionLastResult(transaction);
   }
 }

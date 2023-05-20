@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-const SigninPresenter = ({ wallet, isSignedIn }) => {
+const SigninPresenter = ({ wallet, isSignedIn, walletSelect }) => {
   const navigate = useNavigate();
 
   const handleSignIn = async () => {
-    await wallet.signIn();
+    await walletSelect();
   };
   useEffect(() => {
     if (isSignedIn) {
-      navigate("/");
+      navigate('/');
     }
   }, [isSignedIn]);
 

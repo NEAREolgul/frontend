@@ -1,17 +1,25 @@
-import { Link, useLocation } from "react-router-dom";
-import Avatar from "../../../assets/images/join-avatar.jpg";
-import { useEffect, useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
+import Avatar from '../../../assets/images/join-avatar.jpg';
 
-const SignupPresenter = ({ wallet, isSignedIn }) => {
-  const [accountId, setAccountId] = useState("");
-
+const SignupPresenter = ({
+  wallet,
+  isSignedIn,
+  walletSelect,
+  account,
+  signOut,
+}) => {
   const handleWalletCall = async () => {
-    await wallet.signIn();
+    if (account) {
+      await signOut();
+      return;
+    }
+    // await wallet.signIn();
+    await walletSelect();
   };
 
-  useEffect(() => {
-    setAccountId(wallet.accountId);
-  }, [wallet]);
+  // useEffect(() => {
+  //   setAccountId(wallet.accountId);
+  // }, [wallet]);
 
   return (
     <main className="grow bg-gray-50">
@@ -89,7 +97,7 @@ const SignupPresenter = ({ wallet, isSignedIn }) => {
                     id="wallet_address"
                     type="text"
                     className="form-input w-full text-gray-800"
-                    value={accountId ? accountId : ""}
+                    value={account ? account.accountId : ''}
                   />
                 </div>
               </div>
@@ -102,10 +110,12 @@ const SignupPresenter = ({ wallet, isSignedIn }) => {
                 </Link>
                 <div className="ml-2">
                   <button
-                    className="btn-sm text-white bg-blue-500 hover:bg-blue-600 shadow-sm"
+                    className={`btn-sm text-white ${
+                      account ? 'bg-red-500' : 'bg-blue-500 hover:bg-blue-600'
+                    }  shadow-sm`}
                     onClick={handleWalletCall}
                   >
-                    Import Wallet
+                    {account ? 'Disconnect' : 'Import Wallet'}
                   </button>
                 </div>
               </div>
