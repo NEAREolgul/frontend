@@ -1,6 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import { MainLayout } from '../Layout';
-import { Main, Signin, Signup, RegisterArtist } from './pages';
+import {
+  Main,
+  Signin,
+  Signup,
+  RegisterArtist,
+  NFTlist,
+  NFTdetail,
+} from './pages';
 const IndexRouter = ({ isSignedIn, contractId, wallet }) => {
   return (
     <Routes>
@@ -21,6 +28,8 @@ const IndexRouter = ({ isSignedIn, contractId, wallet }) => {
           element={<RegisterArtist />}
           isSignedIn={isSignedIn}
         />
+        <Route path="/nftlist" element={<NFTlist />} />
+        <Route path="/nftdetail" element={<NFTdetail />} />
       </Route>
     </Routes>
   );
