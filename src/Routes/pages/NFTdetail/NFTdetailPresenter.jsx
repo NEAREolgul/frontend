@@ -2,23 +2,39 @@ import NFTdetailImg from '../../../Components/NftdetailImg';
 import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
 import '../../../assets/css/Nftdetail.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Carousel from '../../../Components/Carousel';
+import Buylist from '../../../Components/Buylist';
+import PostAuthor01 from '../../../assets/images/blog-author-01.jpg';
+import PostAuthor02 from '../../../assets/images/blog-author-02.jpg';
+import PostAuthor03 from '../../../assets/images/blog-author-03.jpg';
+import PostAuthor04 from '../../../assets/images/blog-author-04.jpg';
+import PostAuthor05 from '../../../assets/images/blog-author-05.jpg';
 
 const NFTdetailPresenter = (props) => {
   /* Router */
   /* State */
+  const { buyList, setBuyList, bidList, setBidList } = props;
+  const [reversebuyList, setReversebuyList] = useState(buyList);
+  const [reversebidList, setReversebidList] = useState(bidList);
   const [nftInfo, setNftInfo] = useState({
-    content_title: 'Title',
-    user_nm: 'HanHo',
+    content_title: 'SS Face',
+    user_nm: 'Bogeum',
     content_desc:
-      'This NFT made buy HanHo. This wonderful Art is made in Korea',
+      'Its a NFT of a face reminiscent of a beautiful solar system in an empty universe that makes us realize that we are beautiful',
     content_price: '$ 90',
     is_sell: false,
     content_paint: 'What is this?',
     created_at: '2020-12-20',
   });
   /* Hooks */
+  useEffect(() => {
+    setReversebuyList([...buyList].reverse());
+  }, [buyList]);
+
+  useEffect(() => {
+    setReversebidList([...bidList].reverse());
+  }, [bidList]);
   /* Functions */
   /* Render */
   return (
@@ -68,7 +84,43 @@ const NFTdetailPresenter = (props) => {
               </div>
             </div>
           </div>
-          <div className="detailinfo">입찰현황 / 거래기록</div>
+          <div className="box">
+            <div className="fw status">
+              <div className="status-header">
+                <p>History</p>
+              </div>
+              <div>
+                {reversebuyList.map((item, index) => {
+                  return (
+                    <Buylist
+                      key={index}
+                      price={item.price}
+                      user_nm={item.user_nm}
+                      authSrc={item.authSrc}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="fw status">
+              <div className="status-header">
+                <p>Bid Status</p>
+              </div>
+              <div>
+                {reversebidList.map((item, index) => {
+                  return (
+                    <Buylist
+                      key={index}
+                      price={item.price}
+                      user_nm={item.user_nm}
+                      authSrc={item.authSrc}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
           <div>
             <Carousel />
           </div>
@@ -79,12 +131,3 @@ const NFTdetailPresenter = (props) => {
 };
 
 export default NFTdetailPresenter;
-
-// 이름
-// 가격
-// 작가
-// 판매여부
-// 로그
-
-// 구매
-// 제안

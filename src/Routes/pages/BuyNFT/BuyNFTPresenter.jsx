@@ -8,28 +8,59 @@ import Buylist from '../../../Components/Buylist';
 import PostAuthor01 from '../../../assets/images/blog-author-01.jpg';
 import PostAuthor02 from '../../../assets/images/blog-author-02.jpg';
 import PostAuthor03 from '../../../assets/images/blog-author-03.jpg';
+import PostAuthor04 from '../../../assets/images/blog-author-04.jpg';
+import PostAuthor05 from '../../../assets/images/blog-author-05.jpg';
+import { useLoading } from '../../../utils/LoadingManager';
 
 const BuyNFTPresenter = (props) => {
   /* Router */
   /* State */
-  const { isSignedIn, buyList, setBuyList } = props;
+  const { handleLoadingTimer } = useLoading();
+  const { isSignedIn, buyList, setBuyList, bidList, setBidList } = props;
+  const [reversebuyList, setReversebuyList] = useState(buyList);
+  const [reversebidList, setReversebidList] = useState(bidList);
   const [nftInfo, setNftInfo] = useState({
-    content_title: 'Title',
-    user_nm: 'HanHo',
+    content_title: 'SS Face',
+    user_nm: 'BoGeum',
     content_desc:
-      'This NFT made buy HanHo. This wonderful Art is made in Korea',
+      'Its a NFT of a face reminiscent of a beautiful solar system in an empty universe that makes us realize that we are beautiful',
     content_price: '90',
     is_sell: false,
     content_paint: 'What is this?',
     created_at: '2020-12-20',
   });
+
   /* Hooks */
-  /* Functions */
   useEffect(() => {
     if (isSignedIn) {
       navigate('/');
     }
   }, [isSignedIn]);
+
+  useEffect(() => {
+    setReversebuyList([...buyList].reverse());
+  }, [buyList]);
+
+  useEffect(() => {
+    setReversebidList([...bidList].reverse());
+  }, [bidList]);
+
+  /* Functions */
+  const sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
+  const onClickBuy = async () => {
+    handleLoadingTimer(2000);
+    await sleep(2000);
+    const newdata = {
+      price: '90',
+      user_nm: 'HanHo',
+      authSrc: PostAuthor04,
+    };
+    await setBuyList([...buyList, newdata]);
+    await setNftInfo({ ...nftInfo, user_nm: 'HanHo' });
+  };
 
   /* Render */
   return (
@@ -61,7 +92,7 @@ const BuyNFTPresenter = (props) => {
               <div className="actionbuttonbox">
                 <Link
                   className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                  to={{ pathname: '/' }}
+                  onClick={onClickBuy}
                 >
                   Buy
                 </Link>
@@ -74,12 +105,15 @@ const BuyNFTPresenter = (props) => {
                 <p>History</p>
               </div>
               <div>
-                {buyList.map((item, index) => {
-                  <Buylist
-                    price={item.price}
-                    user_nm={item.user_nm}
-                    authSrc={item.authSrc}
-                  />;
+                {reversebuyList.map((item, index) => {
+                  return (
+                    <Buylist
+                      key={index}
+                      price={item.price}
+                      user_nm={item.user_nm}
+                      authSrc={item.authSrc}
+                    />
+                  );
                 })}
               </div>
             </div>
@@ -89,8 +123,16 @@ const BuyNFTPresenter = (props) => {
                 <p>Bid Status</p>
               </div>
               <div>
-                <Buylist price="58" user_nm="Yohan" authSrc={PostAuthor02} />
-                <Buylist price="38" user_nm="Simon" authSrc={PostAuthor03} />
+                {reversebidList.map((item, index) => {
+                  return (
+                    <Buylist
+                      key={index}
+                      price={item.price}
+                      user_nm={item.user_nm}
+                      authSrc={item.authSrc}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>

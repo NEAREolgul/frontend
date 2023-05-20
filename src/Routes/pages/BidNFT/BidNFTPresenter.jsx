@@ -4,19 +4,29 @@ import Inspiration01 from '../../../assets/images/inspiration-01.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import NearIcon from '../../../assets/NearIcon.png';
 import '../../../assets/css/BidNFT.css';
+import Buylist from '../../../Components/Buylist';
+import PostAuthor01 from '../../../assets/images/blog-author-01.jpg';
+import PostAuthor02 from '../../../assets/images/blog-author-02.jpg';
+import PostAuthor03 from '../../../assets/images/blog-author-03.jpg';
+import PostAuthor04 from '../../../assets/images/blog-author-04.jpg';
+import PostAuthor05 from '../../../assets/images/blog-author-05.jpg';
+import { useLoading } from '../../../utils/LoadingManager';
 
 const BidNFTPresenter = (props) => {
   /* Router */
   const navigate = useNavigate();
 
   /* State */
-  const { isSignedIn } = props;
+  const { handleLoadingTimer } = useLoading();
+  const { isSignedIn, buyList, setBuyList, bidList, setBidList } = props;
+  const [reversebuyList, setReversebuyList] = useState(buyList);
+  const [reversebidList, setReversebidList] = useState(bidList);
   const [nftInfo, setNftInfo] = useState({
-    content_title: 'Title',
-    user_nm: 'HanHo',
+    content_title: 'SS Face',
+    user_nm: 'BoGeum',
     content_desc:
-      'This NFT made buy HanHo. This wonderful Art is made in Korea',
-    content_price: '90',
+      'Its a NFT of a face reminiscent of a beautiful solar system in an empty universe that makes us realize that we are beautiful',
+    content_price: '58',
     is_sell: false,
     content_paint: 'What is this?',
     created_at: '2020-12-20',
@@ -28,6 +38,31 @@ const BidNFTPresenter = (props) => {
       navigate('/');
     }
   }, [isSignedIn]);
+
+  useEffect(() => {
+    setReversebuyList([...buyList].reverse());
+  }, [buyList]);
+
+  useEffect(() => {
+    setReversebidList([...bidList].reverse());
+  }, [bidList]);
+
+  /* Functions */
+  const sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
+  const onClickBid = async () => {
+    handleLoadingTimer(2000);
+    await sleep(2000);
+    const newdata = {
+      price: '70',
+      user_nm: 'HanHo',
+      authSrc: PostAuthor04,
+    };
+    await setBidList([...bidList, newdata]);
+    await setNftInfo({ ...nftInfo, content_price: '70' });
+  };
 
   /* Functions */
   /* Render */
@@ -67,7 +102,7 @@ const BidNFTPresenter = (props) => {
                 </div>
                 <Link
                   className="actionbutton btn-sm text-white bg-blue-500 hover:bg-blue-600 w-full shadow-sm"
-                  to={{ pathname: '/' }}
+                  onClick={onClickBid}
                 >
                   Place a Bid
                 </Link>
@@ -75,7 +110,43 @@ const BidNFTPresenter = (props) => {
             </div>
           </div>
           <div>
-            <p className="fw">현황</p>
+            <div className="box">
+              <div className="fw status">
+                <div className="status-header">
+                  <p>History</p>
+                </div>
+                <div>
+                  {reversebuyList.map((item, index) => {
+                    return (
+                      <Buylist
+                        key={index}
+                        price={item.price}
+                        user_nm={item.user_nm}
+                        authSrc={item.authSrc}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="fw status">
+                <div className="status-header">
+                  <p>Bid Status</p>
+                </div>
+                <div>
+                  {reversebidList.map((item, index) => {
+                    return (
+                      <Buylist
+                        key={index}
+                        price={item.price}
+                        user_nm={item.user_nm}
+                        authSrc={item.authSrc}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

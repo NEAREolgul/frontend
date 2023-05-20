@@ -25,6 +25,11 @@ import Avatar15 from '../assets/images/carousel-avatar-15.jpg';
 import Avatar16 from '../assets/images/carousel-avatar-16.jpg';
 import Avatar17 from '../assets/images/carousel-avatar-17.jpg';
 import Avatar18 from '../assets/images/carousel-avatar-18.jpg';
+import PostAuthor01 from '../assets/images/blog-author-01.jpg';
+import PostAuthor02 from '../assets/images/blog-author-02.jpg';
+import PostAuthor03 from '../assets/images/blog-author-03.jpg';
+import PostAuthor04 from '../assets/images/blog-author-04.jpg';
+import PostAuthor05 from '../assets/images/blog-author-05.jpg';
 import Swiper, { Navigation } from 'swiper';
 
 import 'swiper/swiper.min.css';
@@ -40,6 +45,14 @@ const carousel = [
   Carousel06,
   Carousel07,
   Carousel08,
+];
+
+const avatars = [
+  PostAuthor01,
+  PostAuthor02,
+  PostAuthor03,
+  PostAuthor04,
+  PostAuthor05,
 ];
 
 const Carousel = (props) => {
@@ -86,7 +99,9 @@ const Carousel = (props) => {
             <div className="swiper-wrapper">
               {/* Carousel items */}
               {carousel.map((i, idx) => {
-                return <SwiperImg Carousel={i} key={idx} />;
+                return (
+                  <SwiperImg Carousel={i} key={idx} avatar={avatars[idx % 5]} />
+                );
               })}
             </div>
           </div>
