@@ -9,13 +9,13 @@ const NFTlistPresenter = (props) => {
   const {} = props;
   const { account } = useWallet();
   const [tokenImg, setTokenImg] = useState(null);
-
+  console.log(account);
   const { keyStores, connect, Contract } = nearAPI;
   /* Hooks */
   useEffect(() => {
     async function setupContract() {
       const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
-
+      console.log(myKeyStore);
       const connectionConfig = {
         networkId: "testnet",
         keyStore: myKeyStore, // first create a key store
@@ -42,7 +42,6 @@ const NFTlistPresenter = (props) => {
 
     setupContract();
   }, []);
-  console.log(tokenImg);
   /* Functions */
   /* Render */
   return <Inspiration List={true} tokenImg={tokenImg} />;

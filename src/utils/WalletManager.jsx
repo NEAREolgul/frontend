@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import '../global';
-import { setupWalletSelector } from '@near-wallet-selector/core';
-import { setupModal } from '@near-wallet-selector/modal-ui';
-import { setupNearWallet } from '@near-wallet-selector/near-wallet';
-import '@near-wallet-selector/modal-ui/styles.css';
-import { HOST_DOMAIN, deleteCookie, setCookie } from '.';
-import UserAPI from '../API/module/UserAPI';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import "../global";
+import { setupWalletSelector } from "@near-wallet-selector/core";
+import { setupModal } from "@near-wallet-selector/modal-ui";
+import { setupNearWallet } from "@near-wallet-selector/near-wallet";
+import "@near-wallet-selector/modal-ui/styles.css";
+import { HOST_DOMAIN, deleteCookie, setCookie } from ".";
+import UserAPI from "../API/module/UserAPI";
 
 export const CONTRACT_ADDRESS = process.env.VITE_CONTRACT_NAME;
 
@@ -14,7 +14,7 @@ const WalletContext = createContext(null);
 export const useWallet = () => {
   const context = useContext(WalletContext);
   if (!context) {
-    throw new Error('Cannot find WalletContext');
+    throw new Error("Cannot find WalletContext");
   }
   return context;
 };
@@ -35,7 +35,7 @@ const WalletManager = ({ children }) => {
    */
   const handleStartup = async () => {
     const _selector = await setupWalletSelector({
-      network: 'testnet',
+      network: "testnet",
       modules: [setupNearWallet()],
     });
 
@@ -49,7 +49,7 @@ const WalletManager = ({ children }) => {
    */
   const handleWalletSelect = async () => {
     const modal = setupModal(selector, {
-      contractId: 'ongdv.testnet',
+      contractId: "ismarket.testnet",
     });
 
     modal.show();
@@ -75,13 +75,13 @@ const WalletManager = ({ children }) => {
     const sess = await UserAPI.getUserByAddr(accounts.accountId);
 
     const ss = JSON.stringify(sess);
-    setCookie('NEARFace', ss);
+    setCookie("NEARFace", ss);
     setUserInfo(sess);
   };
 
   const handleSignInWallet = async () => {
-    const wallet = await selector.wallet('near-wallet');
-    const accounts = await wallet.signIn({ contractId: 'ongdv.testnet' });
+    const wallet = await selector.wallet("near-wallet");
+    const accounts = await wallet.signIn({ contractId: "ismarket.testnet" });
   };
 
   /**
@@ -99,7 +99,7 @@ const WalletManager = ({ children }) => {
     await handleStartup();
     setIsSignedIn(false);
     setAccount();
-    deleteCookie('NEARFace', { path: '/', domain: HOST_DOMAIN });
+    deleteCookie("NEARFace", { path: "/", domain: HOST_DOMAIN });
   };
   /* Hooks */
   useEffect(() => {

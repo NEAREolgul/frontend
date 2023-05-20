@@ -89,11 +89,11 @@ const Inspiration = (props) => {
               >
                 {/* 1st Gallery img */}
                 {tokenImg &&
-                  tokenImg.map((i) => {
+                  tokenImg.map((i, idx) => {
                     const { metadata } = i;
-                    console.log(metadata);
                     return (
                       <InspirationImg
+                        key={idx}
                         StyleArray={["0", "1", "3"]}
                         category={category}
                         imgSrc={metadata.media}
