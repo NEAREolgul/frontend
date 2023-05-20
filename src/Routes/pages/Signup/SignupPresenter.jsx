@@ -1,13 +1,23 @@
 import { Link, useLocation } from 'react-router-dom';
 import Avatar from '../../../assets/images/join-avatar.jpg';
+import { useEffect, useState } from 'react';
 
-const SignupPresenter = ({
-  wallet,
-  isSignedIn,
-  walletSelect,
-  account,
-  signOut,
-}) => {
+const SignupPresenter = ({ walletSelect, account, signOut, signUp }) => {
+  /* Router */
+  /* State */
+  const initialState = {
+    user_id: '',
+    user_pw: '',
+    user_nm: '',
+    near_addr: '',
+  };
+  const [userInfo, setUserInfo] = useState(initialState);
+  /* Functions */
+
+  const handleUserInfo = (e) => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
+
   const handleWalletCall = async () => {
     if (account) {
       await signOut();
@@ -17,10 +27,24 @@ const SignupPresenter = ({
     await walletSelect();
   };
 
-  // useEffect(() => {
-  //   setAccountId(wallet.accountId);
-  // }, [wallet]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await signUp(userInfo);
+    if (result) {
+      setUserInfo(initialState);
+      return true;
+    }
+    return false;
+  };
 
+  /* Hooks */
+  useEffect(() => {
+    if (account && account.accountId) {
+      setUserInfo({ ...userInfo, near_addr: account.accountId });
+    }
+  }, [account]);
+
+  /* Render */
   return (
     <main className="grow bg-gray-50">
       <section>
@@ -51,7 +75,7 @@ const SignupPresenter = ({
                 You've been invited by Mark Hooker to join Creative
               </h1>
             </div>
-            <div className="max-w-sm mx-auto">
+            <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
               <div className="flex flex-wrap mb-4">
                 <div className="w-full">
                   <label className="block text-gray-500 text-sm font-medium mb-1">
@@ -59,8 +83,11 @@ const SignupPresenter = ({
                   </label>
                   <input
                     id="user_id"
+                    name="user_id"
                     type="text"
                     className="form-input w-full text-gray-800"
+                    value={userInfo.user_id}
+                    onChange={handleUserInfo}
                   />
                 </div>
               </div>
@@ -71,8 +98,11 @@ const SignupPresenter = ({
                   </label>
                   <input
                     id="password"
+                    name="user_pw"
                     type="password"
                     className="form-input w-full text-gray-800"
+                    value={userInfo.user_pw}
+                    onChange={handleUserInfo}
                   />
                 </div>
               </div>
@@ -82,9 +112,12 @@ const SignupPresenter = ({
                     User Nickname
                   </label>
                   <input
-                    id="nickname"
+                    id="user_nm"
+                    name="user_nm"
                     type="text"
                     className="form-input w-full text-gray-800"
+                    value={userInfo.user_nm}
+                    onChange={handleUserInfo}
                   />
                 </div>
               </div>
@@ -128,12 +161,15 @@ const SignupPresenter = ({
               </div>
               <div className="flex flex-wrap">
                 <div className="w-full">
-                  <button className="btn-sm text-white bg-[#1D9BF0] hover:bg-[#1A90DF] w-full relative flex items-center">
+                  <button
+                    type="submit"
+                    className="btn-sm text-white bg-[#1D9BF0] hover:bg-[#1A90DF] w-full relative flex items-center"
+                  >
                     Join
                   </button>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </section>
