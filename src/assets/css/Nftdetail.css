@@ -57,3 +57,75 @@
 .detailimg {
     padding: 10% 0 10% 20%;
 }
+
+.fontwhite {
+    color: white !important;
+}
+
+.fontcolor {
+    color: #c2c2c2;
+}
+
+.detaildesc {
+    line-height: 1.5;
+}
+
+.detailfont {
+    margin: 5% 0;
+}
+
+.ownerbox {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.ownerbox-p {
+    width: 20%;
+    display: flex;
+}
+
+.ownerbox-info {
+    display: flex;
+}
+
+.ownerbox-info-name {
+    color: white;
+    font-weight:600;
+}
+
+.pricebox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.pricebox-p {
+    width: 20%;
+    display: flex;
+}
+
+.pricebox-price {
+    display: flex;
+    color: white;
+    font-weight: 600;
+}
+
+.actionbuttonbox {
+    margin-top: 5%;
+}
+
+.actionbutton {
+    margin: 3% 0;
+    width: 55% !important;
+}
+
+.notworkingbutton {
+    background-color: #1b3867 !important;
+    color: #818181 !important;
+}
+
+.detailinfo {
+    background-color: white;
+    height: 100%;
+}
